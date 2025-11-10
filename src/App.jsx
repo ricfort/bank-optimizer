@@ -268,7 +268,7 @@ function App() {
                 <div className="text-5xl font-bold text-white tabular-nums">
                   {optimizingCount}
                 </div>
-                <div className="text-xs text-blue-200 mt-2">→ Filtering to Top 10</div>
+                <div className="text-xs text-blue-200 mt-2">→ Filtering Top Candidates</div>
               </div>
             </div>
             
@@ -314,7 +314,7 @@ function App() {
                 '✓ Portfolio Optimized'
               ) : (
                 <span className="flex items-center justify-center">
-                  <span className="mr-2">✨</span> AI Optimize Portfolio (Top 10)
+                  <span className="mr-2">✨</span> AI Optimize Portfolio
                 </span>
               )}
             </button>
