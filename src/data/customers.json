@@ -1,13 +1,13 @@
 [
   {
     "id": 1,
-    "name": "TechCorp Industries",
-    "type": "Technology Conglomerate"
+    "name": "NewPrinces S.p.A.",
+    "type": "FMCG"
   },
   {
     "id": 2,
-    "name": "Global Finance Partners",
-    "type": "Investment Firm"
+    "name": "TeamSystem",
+    "type": "Software & IT Services"
   }
 ]
 

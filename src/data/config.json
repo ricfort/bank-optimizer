@@ -2,106 +2,106 @@
   "customers": [
     {
       "id": 1,
-      "name": "TechCorp Industries",
-      "type": "Technology Conglomerate"
+      "name": "NewPrinces S.p.A.",
+      "type": "FMCG"
     },
     {
       "id": 2,
-      "name": "Global Finance Partners",
-      "type": "Investment Firm"
+      "name": "TeamSystem",
+      "type": "Software & IT Services"
     }
   ],
   "companies": {
     "1": [
       {
         "id": 87,
-        "name": "Jet Tech",
+        "name": "Carrefour",
         "confidence": 100,
         "confidenceB": 96,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=jet",
-        "revenue": "$892M",
-        "ebitda": "$267M",
+        "logo": "https://upload.wikimedia.org/wikipedia/it/2/2a/Carrefour_nuovo_logo.png?20111114162804",
+        "revenue": "$89B",
+        "ebitda": "$2B",
         "shareholders": [
-          "Aerospace Fund",
-          "Defense Contractors",
-          "Employee Owned (29%)"
+          "Groupe Arnault (10%)",
+          "Galeries Lafayette Group (10%)",
+          "Caisse des Dépôts et Consignations (CDC) (2%)",
+          "BlackRock, Inc. (7%)",
+          "Other Shareholders (71%)"
         ],
-        "reasoning": "Next-gen propulsion systems with military and commercial applications. Backlog of $2B+ provides revenue visibility."
+        "reasoning": "Integrated retail network across Europe with 395 subsidiaries. Strong logistics and brand reach enable immediate market expansion and distribution synergies."
       },
       {
         "id": 86,
-        "name": "Ionic Dynamics",
+        "name": "Centrale del Latte d'Italia S.P.A",
         "confidence": 99,
         "confidenceB": 94,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=ionic",
-        "revenue": "$721M",
-        "ebitda": "$216M",
+        "logo": "https://cdn.brandfetch.io/idtriOvHXN/w/450/h/173/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+        "revenue": "$367M",
+        "ebitda": "$30M",
         "shareholders": [
-          "Ion Ventures",
-          "Strategic Alliance Partners",
-          "Public (42%)"
+          "NewPrinces S.p.A. (68%)",
+          "Other Shareholders (32%)"
         ],
-        "reasoning": "Market-leading SaaS platform with 140% net revenue retention. Expansion into international markets underway."
+        "reasoning": "Leading dairy producer in Italy with strong regional brands and efficient nationwide distribution. Integration within NewPrinces Group enhances scale, supply chain synergies, and market stability."
       },
       {
         "id": 85,
-        "name": "Hyper Systems",
+        "name": "Diageo Operations Italy Spa",
         "confidence": 98,
         "confidenceB": 87,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=hyper",
-        "revenue": "$634M",
-        "ebitda": "$189M",
+        "logo": "https://cdn.brandfetch.io/diageo.com/w/400/h/400",
+        "revenue": "$496M",
+        "ebitda": "$33M",
         "shareholders": [
-          "Hyper Growth Fund",
-          "Institutional Heavyweights",
-          "Management (19%)"
+          "TMT GROUP SA (100%)"
         ],
-        "reasoning": "Hyperscale cloud infrastructure provider. Amazon/Microsoft partnerships de-risk growth trajectory."
+        "reasoning": "Global leader in premium alcoholic beverages with an extensive portfolio spanning spirits, beer, and wine. Strong brand equity through icons like Johnnie Walker, Guinness, and Tanqueray supports global recognition and pricing power. Robust distribution network and focus on innovation, sustainability, and digital engagement drive consistent market leadership and resilience across regions."
       },
       {
         "id": 84,
-        "name": "Glow Industries",
+        "name": "Granarolo SPA",
         "confidence": 97,
         "confidenceB": 91,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=glow",
-        "revenue": "$556M",
-        "ebitda": "$167M",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Granarolo_corporate_POS2.svg/1024px-Granarolo_corporate_POS2.svg.png",
+        "revenue": "$1.8B",
+        "ebitda": "$76M",
         "shareholders": [
-          "Illumination Capital",
-          "Strategic Corporates",
-          "ESOP (24%)"
+          "Cooperativa Granlatte (65%)",
+          "Intesa San Paolo (15%)",
+          "Others Shareholder (20%)"
         ],
-        "reasoning": "LED and smart lighting systems with IoT integration. Smart city contracts provide stable long-term revenue."
+        "reasoning": "Vertically integrated dairy brands with nationwide cold-chain. Sticky retail contracts and stable demand drive resilient cash flow and sourcing synergies."
       },
       {
-        "id": 83,
-        "name": "Flash Solutions",
-        "confidence": 96,
-        "confidenceB": 85,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=flash",
-        "revenue": "$423M",
-        "ebitda": "$127M",
+        "id": 41,
+        "name": "Enervit S.p.A.",
+        "confidence": 94,
+        "confidenceB": 87,
+        "logo": "https://cdn.worldvectorlogo.com/logos/enervit.svg",
+        "revenue": "$99M",
+        "ebitda": "$10M",
         "shareholders": [
-          "Speed Ventures",
-          "Tech Unicorn Fund",
-          "Founders (32%)"
+          "Duke Investment S.r.l. (31%)",
+          "Alberto Sorbini (18%)",
+          "Giuseppe Sorbini (18%)",
+          "Maurizia Sorbini (15%)",
+          "Other shareholders (18%)"
         ],
-        "reasoning": "Real-time data processing platform with Fortune 500 clients. Best-in-class technology with 99.99% uptime SLA."
+        "reasoning": "Specialist in sports & functional nutrition with strong brand in Italy and growing e-commerce/pharmacy channels. Low leverage and solid cash generation support sustained growth and product innovation."
       },
       {
-        "id": 1,
-        "name": "Acme Software Solutions",
-        "confidence": 95,
-        "confidenceB": 88,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=acme",
-        "revenue": "$125M",
-        "ebitda": "$38M",
+        "id": 82,
+        "name": "Lo Bello Fosfovit srl",
+        "confidence": 93,
+        "confidenceB": 93,
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4LwCBaAsDc5-NVPW2YfB2w18ZFdAAu-asfQ&s",
+        "revenue": "$1.9M",
+        "ebitda": "$158K",
         "shareholders": [
-          "TechVentures LP",
-          "Innovation Capital",
-          "Founders (35%)"
+          "Lo Bello Family (90%)",
+          "Management Team (10%)"
         ],
-        "reasoning": "Strong product-market fit with 40% YoY growth. Recent expansion into enterprise segment shows promising traction."
+        "reasoning": "Global leader in premium functional foods, combining Italian quality, innovation, and sustainability. Its trusted brand, diversified portfolio, and strong distribution network drive consistent growth and resilience across international markets."
       },
       {
         "id": 41,
@@ -814,94 +814,83 @@
     ],
     "2": [
       {
-        "id": 187,
-        "name": "Junior Capital LLC",
-        "confidence": 100,
-        "confidenceB": 92,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=junior",
-        "revenue": "$4.7B",
-        "ebitda": "$799M",
+        "id": 101,
+        "name": "Algoritmi S.r.l.",
+        "confidence": 91,
+        "confidenceB": 96,
+        "logo": "https://www.teamsystem.com/media/cache/img/webp/768/15898_z_algoritmi-logo-gr.png",
+        "revenue": "$844K",
+        "ebitda": "$842K",
         "shareholders": [
-          "High-Yield Specialists",
-          "Credit Opportunity Funds",
-          "Strategic Partners (36%)"
+          "Owned 100% by Luigi Matticari (Founder)"
         ],
-        "reasoning": "Premium positioning in subordinated debt markets. Strong sponsor relationships provide proprietary deal flow."
+        "reasoning": "AI-first software studio focused on automation and SME integrations; a strategic acqui-hire to accelerate TeamSystem's GenAI copilots and document understanding (invoices/PEC) across products. Reusable connectors and models reduce time-to-market and increase attach rates in accounting, payroll and legal."
       },
       {
-        "id": 186,
-        "name": "Senior Debt Fund",
-        "confidence": 99,
+        "id": 102,
+        "name": "Data Consult",
+        "confidence": 91,
         "confidenceB": 95,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=senior",
-        "revenue": "$5.2B",
-        "ebitda": "$728M",
+        "logo": "https://cdn.brandfetch.io/idS5XJ0ovU/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B",
+        "revenue": "$2.01M",
+        "ebitda": "$1.96M",
         "shareholders": [
-          "Fixed Income Investors",
-          "Insurance Companies",
-          "Pension Funds (65%)"
+          "Employee Owned 100%"
         ],
-        "reasoning": "Senior secured lending with first lien protection. Strong covenant packages and low loss-given-default profile."
+        "reasoning": "Provides software, hardware, and cloud solutions to digitalize and streamline operations for SMEs and professionals."
       },
       {
-        "id": 185,
-        "name": "Mezzanine Capital",
-        "confidence": 98,
-        "confidenceB": 88,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=mezzanine",
-        "revenue": "$3.8B",
-        "ebitda": "$684M",
-        "shareholders": [
-          "Structured Finance",
-          "Alternative Credit",
-          "Insurance Capital (42%)"
-        ],
-        "reasoning": "Attractive risk-adjusted returns in capital structure sweet spot. Equity upside through warrants enhances IRR."
-      },
-      {
-        "id": 181,
-        "name": "Receivables Finance",
-        "confidence": 97,
+        "id": 103,
+        "name": "Microdata Group",
+        "confidence": 88,
         "confidenceB": 91,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=receivables",
-        "revenue": "$3.5B",
-        "ebitda": "$595M",
+        "logo": "https://imgs.search.brave.com/Ac14oSUL9DJ_JcJqF1F4A2t766X05MTGVisoKyjmbnA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2QzL01pY3JvZGF0/YV9Db3Jwb3JhdGlv/bl9sb2dvLnN2Zw",
+        "revenue": "$30.26M",
+        "ebitda": "$5.37M",
         "shareholders": [
-          "Trade Finance Specialists",
-          "Banks Co-Investment",
-          "Private Equity (38%)"
+          "Dedagroup 70%",
+          "Alfredo Lupi e Carolina Cortellini 30%"
         ],
-        "reasoning": "Growing trade finance market with strong credit fundamentals. Technology platform provides competitive advantage."
+        "reasoning": "TeamSystem should acquire Microdata to add AI-powered BPO and document management capabilities, expanding beyond pure software into high-margin enterprise process outsourcing services for banking and insurance clients."
       },
       {
-        "id": 141,
-        "name": "Long-Short Equity",
-        "confidence": 96,
-        "confidenceB": 90,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=longshort",
-        "revenue": "$3.2B",
-        "ebitda": "$576M",
+        "id": 104,
+        "name": "AUTOSCOUT24 ITALIA S.P.A",
+        "confidence": 85,
+        "confidenceB": 91,
+        "logo": "https://cdn.brandfetch.io/idfIseVtd1/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+        "revenue": "$97.4M",
+        "ebitda": "$63.1M",
         "shareholders": [
-          "Hedge Fund Investors",
-          "Ultra-HNW",
-          "Institutional (48%)"
+          "Hellman & Friedman 100%"
         ],
-        "reasoning": "Best-in-class equity hedge fund with 15% annualized returns. Low correlation to market provides portfolio diversification."
+        "reasoning": "to diversify into the consumer digital automotive market with 10 million monthly users across 18 European countries, leveraging synergies in digital payments, AI, and cloud."
       },
       {
-        "id": 182,
-        "name": "Supply Chain Finance",
-        "confidence": 95,
-        "confidenceB": 87,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=supply",
-        "revenue": "$4.1B",
-        "ebitda": "$656M",
+        "id": 105,
+        "name": "Anfix",
+        "confidence": 82,
+        "confidenceB": 84,
+        "logo": "https://cdn.brandfetch.io/idYiSALkku/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+        "revenue": "$1.47M",
+        "ebitda": "$1.20M",
         "shareholders": [
-          "Global Trade Partners",
-          "Strategic Corporates",
-          "Financial Institutions (55%)"
+          "Employee Owned 100%"
         ],
-        "reasoning": "Mission-critical financing for global supply chains. Blue-chip corporate relationships ensure stable cash flows."
+        "reasoning": "Development and sale of all kinds of IT solutions, both software and hardware, including those based on new technologies, as well as providing operation and maintenance services."
+      },
+      {
+        "id": 106,
+        "name": "Condomani",
+        "confidence": 82,
+        "confidenceB": 92,
+        "logo": "https://www.emiliaromagnastartup.it/sites/default/files/logo_square/Logo%20Condomani%20-%20rettangolare%20-%20colori.png",
+        "revenue": "$348K",
+        "ebitda": "$295K",
+        "shareholders": [
+          "Owned 100% by Antonio Bevacqua (Founder)"
+        ],
+        "reasoning": "Vertical SaaS for condominium and property managers in Italy, highly complementary to TeamSystem's Domustudio and payments stack. Consolidates a fragmented niche and unlocks cross-sell of e-invoicing, digital signature and recurring fee collection via a unified administrator/resident portal."
       },
       {
         "id": 101,
