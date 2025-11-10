@@ -54,6 +54,29 @@ function App() {
     return `${confidence}%`
   }
 
+  const getCompanyInitials = (name) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .slice(0, 2)
+      .join('')
+      .toUpperCase()
+  }
+
+  const getInitialsColor = (confidence) => {
+    if (confidence >= 90) return 'bg-gradient-to-br from-blue-600 to-blue-700'
+    if (confidence >= 80) return 'bg-gradient-to-br from-blue-500 to-blue-600'
+    if (confidence >= 70) return 'bg-gradient-to-br from-gray-600 to-gray-700'
+    return 'bg-gradient-to-br from-gray-500 to-gray-600'
+  }
+
+  const getStatusBadge = (confidence) => {
+    if (confidence >= 95) return { text: 'PRIME TARGET', color: 'bg-green-600' }
+    if (confidence >= 85) return { text: 'HIGH PRIORITY', color: 'bg-blue-600' }
+    if (confidence >= 75) return { text: 'QUALIFIED', color: 'bg-gray-600' }
+    return null
+  }
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Moody's Orbis Style Header */}
@@ -211,48 +234,92 @@ function App() {
             </div>
             
             <div className="grid grid-cols-1 gap-4 max-h-[800px] overflow-y-auto pr-2">
-              {displayedCompanies.map((company, index) => (
+              {displayedCompanies.map((company, index) => {
+                const statusBadge = getStatusBadge(company.confidence)
+                return (
                 <div
                   key={company.id}
-                  className="bg-white rounded shadow border border-gray-300 hover:border-blue-500 transition-all duration-200 overflow-hidden"
+                  className="bg-white rounded-lg shadow-md border border-gray-300 hover:border-blue-500 hover:shadow-xl transition-all duration-300 overflow-hidden group"
                   style={{
                     animationDelay: `${index * 50}ms`,
                     animation: 'slideUp 0.5s ease-out forwards',
                     opacity: 0,
                   }}
                 >
-                  <div className="p-6">
+                  {/* Top Accent Bar */}
+                  <div className={`h-1.5 ${getInitialsColor(company.confidence)}`}></div>
+                  
+                  <div className="p-6 relative">
                     {/* Header with Logo and Name */}
                     <div className="flex items-start gap-5 mb-5">
-                      {company.logo && (
-                        <div className="flex-shrink-0">
-                          <img
-                            src={company.logo}
-                            alt={company.name}
-                            className="w-16 h-16 rounded bg-blue-50 p-2 border border-blue-200"
-                          />
-                        </div>
-                      )}
+                      <div className="flex-shrink-0">
+                        {company.logo ? (
+                          <div className="w-16 h-16 rounded-lg bg-white border-2 border-gray-200 flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                            <img 
+                              src={company.logo} 
+                              alt={company.name}
+                              className="w-full h-full object-contain p-2"
+                              onError={(e) => {
+                                // Fallback to initials if image fails to load
+                                e.target.style.display = 'none';
+                                e.target.parentElement.innerHTML = `
+                                  <div class="w-full h-full ${getInitialsColor(company.confidence)} flex items-center justify-center rounded-lg">
+                                    <span class="text-white text-xl font-bold tracking-tight">
+                                      ${getCompanyInitials(company.name)}
+                                    </span>
+                                  </div>
+                                `;
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <div className={`w-16 h-16 rounded-lg ${getInitialsColor(company.confidence)} flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-transform duration-300`}>
+                            <span className="text-white text-xl font-bold tracking-tight">
+                              {getCompanyInitials(company.name)}
+                            </span>
+                          </div>
+                        )}
+                      </div>
                       <div className="flex-1">
-                        <div className="flex items-start justify-between">
-                          <h3 className="text-xl font-bold text-gray-900 mb-2">
-                            {company.name}
-                          </h3>
-                          <span className="ml-4 px-3 py-1 bg-blue-600 text-white text-base font-bold rounded">
-                            {company.confidence}
-                          </span>
+                        <div className="flex items-start justify-between mb-2">
+                          <div className="flex-1">
+                            <h3 className="text-xl font-bold text-gray-900 mb-1">
+                              {company.name}
+                            </h3>
+                            {statusBadge && (
+                              <span className={`inline-block px-2 py-0.5 ${statusBadge.color} text-white text-xs font-bold rounded uppercase tracking-wider`}>
+                                {statusBadge.text}
+                              </span>
+                            )}
+                          </div>
+                          <div className="ml-4 text-right">
+                            <div className="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Score</div>
+                            <div className="px-3 py-1.5 bg-gradient-to-br from-blue-600 to-blue-700 text-white text-lg font-bold rounded-lg shadow-md">
+                              {company.confidence}
+                            </div>
+                          </div>
                         </div>
                         
                         {/* Financial Metrics */}
                         {company.revenue && (
-                          <div className="flex gap-4 mt-3">
-                            <div className="bg-blue-50 px-3 py-2 rounded border border-blue-200">
-                              <p className="text-xs text-blue-800 font-bold mb-1 uppercase tracking-wide">Revenue</p>
-                              <p className="text-base font-bold text-gray-900">{company.revenue}</p>
+                          <div className="grid grid-cols-2 gap-3 mt-3">
+                            <div className="bg-gradient-to-br from-green-50 to-emerald-50 px-4 py-3 rounded-lg border border-green-200 shadow-sm">
+                              <div className="flex items-center gap-2 mb-1">
+                                <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <p className="text-xs text-green-800 font-bold uppercase tracking-wide">Revenue</p>
+                              </div>
+                              <p className="text-lg font-bold text-gray-900">{company.revenue}</p>
                             </div>
-                            <div className="bg-blue-50 px-3 py-2 rounded border border-blue-200">
-                              <p className="text-xs text-blue-800 font-bold mb-1 uppercase tracking-wide">EBITDA</p>
-                              <p className="text-base font-bold text-gray-900">{company.ebitda}</p>
+                            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 px-4 py-3 rounded-lg border border-blue-200 shadow-sm">
+                              <div className="flex items-center gap-2 mb-1">
+                                <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                                <p className="text-xs text-blue-800 font-bold uppercase tracking-wide">EBITDA</p>
+                              </div>
+                              <p className="text-lg font-bold text-gray-900">{company.ebitda}</p>
                             </div>
                           </div>
                         )}
@@ -261,13 +328,18 @@ function App() {
 
                     {/* Shareholders */}
                     {company.shareholders && (
-                      <div className="mb-5 bg-gray-50 rounded p-3 border-l-4 border-blue-600">
-                        <p className="text-xs font-bold text-gray-700 mb-2 uppercase tracking-wider">Key Shareholders</p>
+                      <div className="mb-5 bg-gradient-to-r from-gray-50 to-slate-50 rounded-lg p-4 border border-gray-200 shadow-sm">
+                        <div className="flex items-center gap-2 mb-3">
+                          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                          </svg>
+                          <p className="text-xs font-bold text-gray-700 uppercase tracking-wider">Key Shareholders</p>
+                        </div>
                         <div className="flex flex-wrap gap-2">
                           {company.shareholders.map((shareholder, idx) => (
                             <span
                               key={idx}
-                              className="px-2 py-1 bg-white text-gray-700 text-xs font-semibold rounded border border-gray-300"
+                              className="px-3 py-1.5 bg-white text-gray-700 text-xs font-semibold rounded-md border border-gray-300 shadow-sm hover:shadow transition-shadow"
                             >
                               {shareholder}
                             </span>
@@ -278,25 +350,30 @@ function App() {
 
                     {/* AI Reasoning */}
                     {company.reasoning && showConfidenceB && (
-                      <div className="mb-5 bg-blue-50 rounded p-3 border-l-4 border-blue-600 animate-fade-in">
-                        <p className="text-xs font-bold text-blue-900 mb-2 uppercase tracking-wider flex items-center">
-                          <span className="mr-2">✨</span> AI Investment Rationale
-                        </p>
-                        <p className="text-gray-800 leading-relaxed text-sm">{company.reasoning}</p>
+                      <div className="mb-5 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-lg p-4 border-l-4 border-blue-600 shadow-sm animate-fade-in">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
+                            <span className="text-white text-sm">✨</span>
+                          </div>
+                          <p className="text-xs font-bold text-blue-900 uppercase tracking-wider">
+                            AI Investment Rationale
+                          </p>
+                        </div>
+                        <p className="text-gray-800 leading-relaxed text-sm pl-8">{company.reasoning}</p>
                       </div>
                     )}
 
                     {/* Confidence Bars */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 bg-gray-50 rounded-lg p-4 border border-gray-200">
                       {/* Initial Confidence Bar */}
                       <div>
-                        <div className="flex justify-between text-xs text-gray-600 mb-1 font-bold uppercase tracking-wider">
+                        <div className="flex justify-between text-xs text-gray-600 mb-2 font-bold uppercase tracking-wider">
                           <span>Initial Score</span>
-                          <span className="text-blue-600">{company.confidence}%</span>
+                          <span className="text-blue-600 text-sm">{company.confidence}%</span>
                         </div>
-                        <div className="w-full bg-gray-200 h-2">
+                        <div className="w-full bg-gray-300 h-2.5 rounded-full overflow-hidden shadow-inner">
                           <div
-                            className="bg-blue-600 h-2 transition-all duration-1000"
+                            className="bg-gradient-to-r from-blue-500 to-blue-600 h-2.5 rounded-full transition-all duration-1000 shadow"
                             style={{ width: getConfidenceWidth(company.confidence) }}
                           ></div>
                         </div>
@@ -304,16 +381,16 @@ function App() {
 
                       {/* AI-Optimized Confidence Bar */}
                       {showConfidenceB && (
-                        <div className="animate-fade-in">
-                          <div className="flex justify-between text-xs text-gray-600 mb-1 font-bold uppercase tracking-wider">
+                        <div className="animate-fade-in pt-3 border-t border-gray-300">
+                          <div className="flex justify-between text-xs text-gray-600 mb-2 font-bold uppercase tracking-wider">
                             <span className="flex items-center">
                               <span className="mr-1.5">✨</span> Client-Tailored Score
                             </span>
-                            <span className="text-blue-600">{company.confidenceB}%</span>
+                            <span className="text-blue-600 text-sm">{company.confidenceB}%</span>
                           </div>
-                          <div className="w-full bg-gray-200 h-2.5">
+                          <div className="w-full bg-gray-300 h-3 rounded-full overflow-hidden shadow-inner">
                             <div
-                              className={`h-2.5 transition-all duration-1000 ${getConfidenceColor(
+                              className={`h-3 rounded-full transition-all duration-1000 shadow-md ${getConfidenceColor(
                                 company.confidenceB
                               )}`}
                               style={{ 
@@ -327,7 +404,8 @@ function App() {
                     </div>
                   </div>
                 </div>
-              ))}
+              )})}
+            
             </div>
           </div>
         )}
