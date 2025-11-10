@@ -1,0 +1,308 @@
+{
+  "comment": "These are the TOP 10 companies that will pass the Scout AI filter. Replace these to customize your demo.",
+  "1": [
+    {
+      "id": 87,
+      "name": "Jet Tech",
+      "confidence": 100,
+      "confidenceB": 96,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=jet",
+      "revenue": "$892M",
+      "ebitda": "$267M",
+      "shareholders": [
+        "Aerospace Fund",
+        "Defense Contractors",
+        "Employee Owned (29%)"
+      ],
+      "reasoning": "Next-gen propulsion systems with military and commercial applications. Backlog of $2B+ provides revenue visibility."
+    },
+    {
+      "id": 86,
+      "name": "Ionic Dynamics",
+      "confidence": 99,
+      "confidenceB": 94,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=ionic",
+      "revenue": "$721M",
+      "ebitda": "$216M",
+      "shareholders": [
+        "Ion Ventures",
+        "Strategic Alliance Partners",
+        "Public (42%)"
+      ],
+      "reasoning": "Market-leading SaaS platform with 140% net revenue retention. Expansion into international markets underway."
+    },
+    {
+      "id": 85,
+      "name": "Hyper Systems",
+      "confidence": 98,
+      "confidenceB": 87,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=hyper",
+      "revenue": "$634M",
+      "ebitda": "$189M",
+      "shareholders": [
+        "Hyper Growth Fund",
+        "Institutional Heavyweights",
+        "Management (19%)"
+      ],
+      "reasoning": "Hyperscale cloud infrastructure provider. Amazon/Microsoft partnerships de-risk growth trajectory."
+    },
+    {
+      "id": 84,
+      "name": "Glow Industries",
+      "confidence": 97,
+      "confidenceB": 91,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=glow",
+      "revenue": "$556M",
+      "ebitda": "$167M",
+      "shareholders": [
+        "Illumination Capital",
+        "Strategic Corporates",
+        "ESOP (24%)"
+      ],
+      "reasoning": "LED and smart lighting systems with IoT integration. Smart city contracts provide stable long-term revenue."
+    },
+    {
+      "id": 83,
+      "name": "Flash Solutions",
+      "confidence": 96,
+      "confidenceB": 85,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=flash",
+      "revenue": "$423M",
+      "ebitda": "$127M",
+      "shareholders": [
+        "Speed Ventures",
+        "Tech Unicorn Fund",
+        "Founders (32%)"
+      ],
+      "reasoning": "Real-time data processing platform with Fortune 500 clients. Best-in-class technology with 99.99% uptime SLA."
+    },
+    {
+      "id": 1,
+      "name": "Acme Software Solutions",
+      "confidence": 95,
+      "confidenceB": 88,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=acme",
+      "revenue": "$125M",
+      "ebitda": "$38M",
+      "shareholders": [
+        "TechVentures LP",
+        "Innovation Fund",
+        "Founders (15%)"
+      ],
+      "reasoning": "Cloud-based enterprise software with strong recurring revenue model. 95% customer retention rate indicates product stickiness."
+    },
+    {
+      "id": 2,
+      "name": "Beta Networks",
+      "confidence": 94,
+      "confidenceB": 82,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=beta",
+      "revenue": "$89M",
+      "ebitda": "$27M",
+      "shareholders": [
+        "Network Capital",
+        "Strategic Partners Group",
+        "Management (22%)"
+      ],
+      "reasoning": "Cybersecurity leader with government contracts. Increasing threat landscape drives sustained demand for their services."
+    },
+    {
+      "id": 3,
+      "name": "Gamma Technologies",
+      "confidence": 93,
+      "confidenceB": 79,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=gamma",
+      "revenue": "$156M",
+      "ebitda": "$47M",
+      "shareholders": [
+        "Tech Growth Partners",
+        "Institutional Investors",
+        "Public (35%)"
+      ],
+      "reasoning": "AI/ML infrastructure platform serving enterprise clients. Strong IP portfolio provides competitive moat."
+    },
+    {
+      "id": 4,
+      "name": "Delta Innovations",
+      "confidence": 92,
+      "confidenceB": 76,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=delta",
+      "revenue": "$201M",
+      "ebitda": "$60M",
+      "shareholders": [
+        "Delta Ventures",
+        "Industrial Holdings Corp",
+        "ESOP (18%)"
+      ],
+      "reasoning": "Industrial IoT solutions with proven ROI. Blue-chip customer base includes multiple Fortune 100 companies."
+    },
+    {
+      "id": 5,
+      "name": "Epsilon Systems",
+      "confidence": 91,
+      "confidenceB": 73,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=epsilon",
+      "revenue": "$178M",
+      "ebitda": "$53M",
+      "shareholders": [
+        "Systems Capital",
+        "Tech Fund III",
+        "Management (25%)"
+      ],
+      "reasoning": "Enterprise resource planning platform with high switching costs. Multi-year contracts provide revenue predictability."
+    }
+  ],
+  "2": [
+    {
+      "id": 87,
+      "name": "Quantum Finance",
+      "confidence": 100,
+      "confidenceB": 95,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=quantum",
+      "revenue": "$1.2B",
+      "ebitda": "$360M",
+      "shareholders": [
+        "Sovereign Wealth Fund",
+        "Pension Partners",
+        "Public (28%)"
+      ],
+      "reasoning": "Algorithmic trading platform with consistent alpha generation. Regulatory compliance and risk management best-in-class."
+    },
+    {
+      "id": 86,
+      "name": "Prime Asset Management",
+      "confidence": 99,
+      "confidenceB": 93,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=prime",
+      "revenue": "$987M",
+      "ebitda": "$296M",
+      "shareholders": [
+        "Institutional Capital",
+        "Strategic Finance Group",
+        "Management (21%)"
+      ],
+      "reasoning": "Alternative investments platform with $50B+ AUM. Strong track record of outperformance vs benchmarks."
+    },
+    {
+      "id": 85,
+      "name": "Apex Investment Solutions",
+      "confidence": 98,
+      "confidenceB": 90,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=apex",
+      "revenue": "$843M",
+      "ebitda": "$253M",
+      "shareholders": [
+        "Finance Ventures",
+        "Banking Consortium",
+        "Employee Owned (17%)"
+      ],
+      "reasoning": "Wealth management technology platform. Scalable SaaS model with enterprise and retail segments."
+    },
+    {
+      "id": 84,
+      "name": "Sterling Financial Tech",
+      "confidence": 97,
+      "confidenceB": 88,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=sterling",
+      "revenue": "$712M",
+      "ebitda": "$214M",
+      "shareholders": [
+        "FinTech Fund",
+        "Strategic Investors",
+        "Founders (19%)"
+      ],
+      "reasoning": "Blockchain-based settlement platform reducing transaction costs by 40%. Adoption by tier-1 banks accelerating."
+    },
+    {
+      "id": 83,
+      "name": "Pinnacle Analytics",
+      "confidence": 96,
+      "confidenceB": 86,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=pinnacle",
+      "revenue": "$634M",
+      "ebitda": "$190M",
+      "shareholders": [
+        "Analytics Capital",
+        "Data Fund",
+        "Public (33%)"
+      ],
+      "reasoning": "Financial data analytics with proprietary datasets. High-margin subscription model with institutional client base."
+    },
+    {
+      "id": 1,
+      "name": "Alpha Capital Markets",
+      "confidence": 95,
+      "confidenceB": 84,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=alpha",
+      "revenue": "$445M",
+      "ebitda": "$134M",
+      "shareholders": [
+        "Market Makers Fund",
+        "Trading Partners",
+        "Management (16%)"
+      ],
+      "reasoning": "Market-making and liquidity provision across asset classes. Technology-driven approach provides competitive edge."
+    },
+    {
+      "id": 2,
+      "name": "Beta Wealth Advisors",
+      "confidence": 94,
+      "confidenceB": 81,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=betawealth",
+      "revenue": "$378M",
+      "ebitda": "$113M",
+      "shareholders": [
+        "Wealth Fund",
+        "Advisory Group",
+        "ESOP (24%)"
+      ],
+      "reasoning": "Independent wealth management firm with UHNW focus. Sticky client relationships with avg tenure of 12+ years."
+    },
+    {
+      "id": 3,
+      "name": "Gamma Risk Solutions",
+      "confidence": 93,
+      "confidenceB": 79,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=gammarisk",
+      "revenue": "$523M",
+      "ebitda": "$157M",
+      "shareholders": [
+        "Risk Capital Partners",
+        "Insurance Consortium",
+        "Public (29%)"
+      ],
+      "reasoning": "Risk management software for financial institutions. Growing regulatory requirements drive demand."
+    },
+    {
+      "id": 4,
+      "name": "Delta Trading Systems",
+      "confidence": 92,
+      "confidenceB": 77,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=deltatrading",
+      "revenue": "$456M",
+      "ebitda": "$137M",
+      "shareholders": [
+        "Trading Tech Fund",
+        "Market Investors",
+        "Founders (22%)"
+      ],
+      "reasoning": "High-frequency trading infrastructure. Low-latency technology provides microsecond advantage in execution."
+    },
+    {
+      "id": 5,
+      "name": "Epsilon Portfolio Management",
+      "confidence": 91,
+      "confidenceB": 75,
+      "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=epsilonport",
+      "revenue": "$389M",
+      "ebitda": "$117M",
+      "shareholders": [
+        "Portfolio Capital",
+        "Asset Management Group",
+        "Management (18%)"
+      ],
+      "reasoning": "Multi-strategy hedge fund with institutional backing. Consistent returns across market cycles demonstrate skill."
+    }
+  ]
+}
+

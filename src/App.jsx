@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
-import configData from './data/config.json'
+import allCompaniesData from './data/config.json'
+import customersData from './data/customers.json'
+import topCompaniesData from './data/topCompanies.json'
 
 function App() {
   const [selectedCustomer, setSelectedCustomer] = useState(null)
@@ -13,6 +15,8 @@ function App() {
   const [approvedCompanies, setApprovedCompanies] = useState(new Set())
   const [swipingOut, setSwipingOut] = useState(new Set())
   const [showFinalAnalysis, setShowFinalAnalysis] = useState(false)
+  const [optimizingCount, setOptimizingCount] = useState(0)
+  const [highlightCount, setHighlightCount] = useState(false)
 
   const filteredCompanies = displayedCompanies.filter(company => !rejectedCompanies.has(company.id))
   
@@ -49,7 +53,7 @@ function App() {
 
   useEffect(() => {
     if (selectedCustomer) {
-      const customerCompanies = configData.companies[selectedCustomer.id]
+      const customerCompanies = allCompaniesData.companies[selectedCustomer.id]
       setCompanies(customerCompanies)
       setDisplayedCompanies(customerCompanies)
       setIsOptimized(false)
@@ -59,6 +63,7 @@ function App() {
       setApprovedCompanies(new Set())
       setSwipingOut(new Set())
       setShowFinalAnalysis(false)
+      setHighlightCount(false)
     }
   }, [selectedCustomer])
 
@@ -71,16 +76,44 @@ function App() {
 
   const handleOptimize = () => {
     setIsOptimizing(true)
-    // Simulate AI processing
-    setTimeout(() => {
-      // Sort by confidence and take top 10
-      const sorted = [...companies].sort((a, b) => b.confidence - a.confidence)
-      const top10 = sorted.slice(0, 10)
-      setDisplayedCompanies(top10)
-      setIsOptimized(true)
-      setShowConfidenceB(false)
-      setIsOptimizing(false)
-    }, 1500)
+    const startCount = companies.length
+    const endCount = 10
+    const duration = 1500
+    const startTime = Date.now()
+    
+    // Animate the counter
+    const animateCount = () => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      
+      // Ease-out animation
+      const easeProgress = 1 - Math.pow(1 - progress, 3)
+      const currentCount = Math.round(startCount - (startCount - endCount) * easeProgress)
+      
+      setOptimizingCount(currentCount)
+      
+      if (progress < 1) {
+        requestAnimationFrame(animateCount)
+      } else {
+        // Animation complete, update the actual data
+        const top10 = topCompaniesData[selectedCustomer.id]
+        setDisplayedCompanies(top10)
+        setIsOptimized(true)
+        setShowConfidenceB(false)
+        setIsOptimizing(false)
+        setOptimizingCount(0)
+        
+        // Trigger highlight after a brief delay
+        setTimeout(() => {
+          setHighlightCount(true)
+          // Remove highlight after 2 seconds
+          setTimeout(() => setHighlightCount(false), 2000)
+        }, 300)
+      }
+    }
+    
+    setOptimizingCount(startCount)
+    requestAnimationFrame(animateCount)
   }
 
   const handleAIOptimize = () => {
@@ -187,14 +220,14 @@ function App() {
             className="w-full p-3 text-base border border-gray-400 rounded focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all bg-white"
             value={selectedCustomer?.id || ''}
             onChange={(e) => {
-              const customer = configData.customers.find(
+              const customer = customersData.find(
                 (c) => c.id === parseInt(e.target.value)
               )
               setSelectedCustomer(customer)
             }}
           >
             <option value="">-- Select a client --</option>
-            {configData.customers.map((customer) => (
+            {customersData.map((customer) => (
               <option key={customer.id} value={customer.id}>
                 {customer.name} - {customer.type}
               </option>
@@ -205,7 +238,7 @@ function App() {
         {/* Loading Overlay */}
         {isOptimizing && (
           <div className="mb-5 bg-white rounded shadow border border-gray-300 p-8 animate-slide-up">
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-4 mb-6">
               <svg className="animate-spin h-8 w-8 text-blue-600" viewBox="0 0 24 24">
                 <circle
                   className="opacity-25"
@@ -227,6 +260,18 @@ function App() {
                 <p className="text-sm text-gray-600">Filtering top prospects from portfolio</p>
               </div>
             </div>
+            
+            {/* Animated Counter */}
+            <div className="text-center mb-4">
+              <div className="inline-block bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg px-8 py-4 shadow-lg">
+                <div className="text-sm text-blue-200 font-bold uppercase tracking-wider mb-1">Companies Analyzed</div>
+                <div className="text-5xl font-bold text-white tabular-nums">
+                  {optimizingCount}
+                </div>
+                <div className="text-xs text-blue-200 mt-2">→ Filtering to Top 10</div>
+              </div>
+            </div>
+            
             <div className="mt-4 bg-gray-200 rounded-full h-2 overflow-hidden">
               <div className="bg-blue-600 h-2 rounded-full animate-pulse" style={{width: '70%'}}></div>
             </div>
@@ -318,7 +363,7 @@ function App() {
           <div className={`animate-slide-up ${isOptimizing ? 'opacity-50 pointer-events-none' : ''}`}>
             <div className="flex justify-between items-center mb-4 bg-white rounded shadow border border-gray-300 p-5">
               <h2 className="text-lg font-bold text-gray-800 uppercase tracking-wide">
-                {showConfidenceB ? 'Final Recommendations' : isOptimized ? 'Optimized Portfolio' : 'Investment Opportunities'} <span className="text-blue-600">({filteredCompanies.length})</span>
+                {showConfidenceB ? 'Final Recommendations' : isOptimized ? 'Optimized Portfolio' : 'Investment Opportunities'} <span className={`text-blue-600 transition-all duration-300 ${highlightCount ? 'animate-pulse bg-blue-200 px-3 py-1 rounded-lg text-blue-900 font-extrabold text-2xl shadow-lg' : ''}`}>({filteredCompanies.length})</span>
               </h2>
               {showConfidenceB && (
                 <div className="flex items-center gap-4 text-xs font-semibold text-gray-600">
