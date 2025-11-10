@@ -576,13 +576,13 @@ function App() {
                         }}
                       >
                         <div className="flex items-start gap-6">
-                          {/* Company Info */}
+                          {/* Company Logo */}
                           <div className="flex-shrink-0">
                             {company.logo ? (
                               <img 
                                 src={company.logo} 
-                                alt={company.name}
-                                className="w-16 h-16 object-contain rounded-lg shadow-lg bg-white p-2"
+                                alt=""
+                                className="w-20 h-20 object-contain rounded-lg shadow-lg bg-white p-2 border-2 border-gray-200"
                                 onError={(e) => {
                                   e.target.style.display = 'none'
                                   e.target.nextSibling.style.display = 'flex'
@@ -590,31 +590,31 @@ function App() {
                               />
                             ) : null}
                             <div 
-                              className={`w-16 h-16 rounded-lg ${getInitialsColor(company.confidence)} items-center justify-center shadow-lg`}
+                              className={`w-20 h-20 rounded-lg ${getInitialsColor(company.confidence)} items-center justify-center shadow-lg border-2 border-gray-200`}
                               style={{ display: company.logo ? 'none' : 'flex' }}
                             >
-                              <span className="text-white text-xl font-bold tracking-tight">
+                              <span className="text-white text-2xl font-bold tracking-tight">
                                 {getCompanyInitials(company.name)}
                               </span>
                             </div>
                           </div>
                           
                           <div className="flex-1">
-                            <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-start justify-between mb-6">
                               <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-1">{company.name}</h3>
-                                <div className="flex gap-2">
-                                  <span className="px-2 py-1 bg-green-600 text-white text-xs font-bold rounded uppercase">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-3">{company.name}</h3>
+                                <div className="flex gap-2 items-center">
+                                  <span className="px-3 py-1.5 bg-green-600 text-white text-xs font-bold rounded-full uppercase tracking-wide">
                                     ✓ Approved
                                   </span>
-                                  <span className="px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded">
+                                  <span className="px-3 py-1.5 bg-blue-600 text-white text-xs font-bold rounded-full uppercase tracking-wide">
                                     Rank #{index + 1}
                                   </span>
                                 </div>
                               </div>
-                              <div className="text-center">
-                                <div className="text-xs text-gray-600 font-bold uppercase mb-1">Compatibility</div>
-                                <div className="text-3xl font-bold text-green-600">{compatibilityScore}%</div>
+                              <div className="text-right bg-white rounded-lg px-6 py-3 border-2 border-green-300 shadow">
+                                <div className="text-xs text-gray-600 font-bold uppercase tracking-wider mb-1">Overall Compatibility</div>
+                                <div className="text-4xl font-bold text-green-600">{compatibilityScore}%</div>
                               </div>
                             </div>
 
