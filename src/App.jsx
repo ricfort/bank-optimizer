@@ -9,6 +9,43 @@ function App() {
   const [isOptimizing, setIsOptimizing] = useState(false)
   const [isAIOptimizing, setIsAIOptimizing] = useState(false)
   const [showConfidenceB, setShowConfidenceB] = useState(false)
+  const [rejectedCompanies, setRejectedCompanies] = useState(new Set())
+  const [approvedCompanies, setApprovedCompanies] = useState(new Set())
+  const [swipingOut, setSwipingOut] = useState(new Set())
+  const [showFinalAnalysis, setShowFinalAnalysis] = useState(false)
+
+  const filteredCompanies = displayedCompanies.filter(company => !rejectedCompanies.has(company.id))
+  
+  const getShareholderScore = (shareholders) => {
+    if (!shareholders) return 50
+    // Score based on number of institutional/strategic investors
+    const institutionalKeywords = ['Fund', 'Capital', 'Ventures', 'Partners', 'Institutional', 'Pension', 'Sovereign']
+    const score = shareholders.reduce((acc, sh) => {
+      const hasInstitutional = institutionalKeywords.some(keyword => sh.includes(keyword))
+      return acc + (hasInstitutional ? 15 : 5)
+    }, 50)
+    return Math.min(score, 100)
+  }
+
+  const getCompatibilityScore = (company) => {
+    const confidenceWeight = 0.35
+    const tailoredWeight = 0.45
+    const shareholderWeight = 0.20
+    
+    const shareholderScore = getShareholderScore(company.shareholders)
+    
+    return Math.round(
+      company.confidence * confidenceWeight +
+      company.confidenceB * tailoredWeight +
+      shareholderScore * shareholderWeight
+    )
+  }
+
+  const approvedCompaniesList = displayedCompanies.filter(c => approvedCompanies.has(c.id))
+  const allReviewed = showConfidenceB && 
+                      displayedCompanies.length > 0 && 
+                      (approvedCompanies.size + rejectedCompanies.size) === displayedCompanies.length &&
+                      approvedCompaniesList.length > 0
 
   useEffect(() => {
     if (selectedCustomer) {
@@ -18,8 +55,19 @@ function App() {
       setIsOptimized(false)
       setIsOptimizing(false)
       setShowConfidenceB(false)
+      setRejectedCompanies(new Set())
+      setApprovedCompanies(new Set())
+      setSwipingOut(new Set())
+      setShowFinalAnalysis(false)
     }
   }, [selectedCustomer])
+
+  // Check if all companies have been reviewed
+  useEffect(() => {
+    if (allReviewed && !showFinalAnalysis) {
+      setTimeout(() => setShowFinalAnalysis(true), 500)
+    }
+  }, [allReviewed, showFinalAnalysis])
 
   const handleOptimize = () => {
     setIsOptimizing(true)
@@ -39,6 +87,10 @@ function App() {
     setIsAIOptimizing(true)
     // Simulate AI processing
     setTimeout(() => {
+      // Sort by confidenceB and take top 5
+      const sorted = [...displayedCompanies].sort((a, b) => b.confidenceB - a.confidenceB)
+      const top5 = sorted.slice(0, 5)
+      setDisplayedCompanies(top5)
       setIsAIOptimizing(false)
       setShowConfidenceB(true)
     }, 2000)
@@ -77,6 +129,24 @@ function App() {
     return null
   }
 
+  const handleApprove = (companyId) => {
+    setApprovedCompanies(prev => new Set([...prev, companyId]))
+  }
+
+  const handleReject = (companyId) => {
+    // Start swipe animation
+    setSwipingOut(prev => new Set([...prev, companyId]))
+    // Remove from list after animation completes
+    setTimeout(() => {
+      setRejectedCompanies(prev => new Set([...prev, companyId]))
+      setSwipingOut(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(companyId)
+        return newSet
+      })
+    }, 400)
+  }
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Moody's Orbis Style Header */}
@@ -106,6 +176,8 @@ function App() {
 
       <div className="max-w-7xl mx-auto px-6 py-6">
 
+        {!showFinalAnalysis && (
+          <>
         {/* Customer Selection */}
         <div className="bg-white rounded shadow border border-gray-300 p-6 mb-5 animate-slide-up">
           <label className="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-wide">
@@ -129,6 +201,37 @@ function App() {
             ))}
           </select>
         </div>
+
+        {/* Loading Overlay */}
+        {isOptimizing && (
+          <div className="mb-5 bg-white rounded shadow border border-gray-300 p-8 animate-slide-up">
+            <div className="flex items-center justify-center gap-4">
+              <svg className="animate-spin h-8 w-8 text-blue-600" viewBox="0 0 24 24">
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  fill="none"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                />
+              </svg>
+              <div>
+                <p className="text-lg font-bold text-gray-900">✨ Scout Agent Analyzing...</p>
+                <p className="text-sm text-gray-600">Filtering top prospects from portfolio</p>
+              </div>
+            </div>
+            <div className="mt-4 bg-gray-200 rounded-full h-2 overflow-hidden">
+              <div className="bg-blue-600 h-2 rounded-full animate-pulse" style={{width: '70%'}}></div>
+            </div>
+          </div>
+        )}
 
         {/* Action Buttons */}
         {selectedCustomer && (
@@ -172,9 +275,9 @@ function App() {
             </button>
             <button
               onClick={handleAIOptimize}
-              disabled={!isOptimized || isAIOptimizing}
+              disabled={!isOptimized || isAIOptimizing || showConfidenceB}
               className={`flex-1 py-3 px-6 text-sm font-bold rounded uppercase tracking-wide transition-all duration-200 ${
-                !isOptimized || isAIOptimizing
+                !isOptimized || isAIOptimizing || showConfidenceB
                   ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
                   : 'bg-white hover:bg-gray-50 text-blue-600 border-2 border-blue-600 shadow hover:shadow-md'
               }`}
@@ -197,11 +300,13 @@ function App() {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     />
                   </svg>
-                  ✨ AI Analyzing Client History...
+                  ✨ Analyzing Customer Persona...
                 </span>
+              ) : showConfidenceB ? (
+                '✓ AI Analysis Complete'
               ) : (
                 <span className="flex items-center justify-center">
-                  <span className="mr-2">✨</span> AI-Enhanced Analysis for Client
+                  <span className="mr-2">✨</span> Customer Persona AI Analysis
                 </span>
               )}
             </button>
@@ -210,10 +315,10 @@ function App() {
 
         {/* Companies Display */}
         {selectedCustomer && displayedCompanies.length > 0 && (
-          <div className="animate-slide-up">
+          <div className={`animate-slide-up ${isOptimizing ? 'opacity-50 pointer-events-none' : ''}`}>
             <div className="flex justify-between items-center mb-4 bg-white rounded shadow border border-gray-300 p-5">
               <h2 className="text-lg font-bold text-gray-800 uppercase tracking-wide">
-                {isOptimized ? 'Optimized Portfolio' : 'Investment Opportunities'} <span className="text-blue-600">({displayedCompanies.length})</span>
+                {showConfidenceB ? 'Final Recommendations' : isOptimized ? 'Optimized Portfolio' : 'Investment Opportunities'} <span className="text-blue-600">({filteredCompanies.length})</span>
               </h2>
               {showConfidenceB && (
                 <div className="flex items-center gap-4 text-xs font-semibold text-gray-600">
@@ -234,16 +339,20 @@ function App() {
             </div>
             
             <div className="grid grid-cols-1 gap-4 max-h-[800px] overflow-y-auto pr-2">
-              {displayedCompanies.map((company, index) => {
+              {filteredCompanies.map((company, index) => {
                 const statusBadge = getStatusBadge(company.confidence)
+                const isApproved = approvedCompanies.has(company.id)
+                const isSwiping = swipingOut.has(company.id)
                 return (
                 <div
                   key={company.id}
-                  className="bg-white rounded-lg shadow-md border border-gray-300 hover:border-blue-500 hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                  className={`bg-white rounded-lg shadow-md border border-gray-300 hover:border-blue-500 hover:shadow-xl transition-all duration-300 overflow-hidden group ${
+                    isSwiping ? 'swipe-out' : ''
+                  }`}
                   style={{
-                    animationDelay: `${index * 50}ms`,
-                    animation: 'slideUp 0.5s ease-out forwards',
-                    opacity: 0,
+                    animationDelay: isSwiping ? '0ms' : `${index * 50}ms`,
+                    animation: isSwiping ? 'swipeOut 0.4s ease-in forwards' : 'slideUp 0.5s ease-out forwards',
+                    opacity: isSwiping ? 1 : 0,
                   }}
                 >
                   {/* Top Accent Bar */}
@@ -348,16 +457,39 @@ function App() {
                       </div>
                     )}
 
-                    {/* AI Reasoning */}
+                    {/* Investment Reasoning */}
                     {company.reasoning && showConfidenceB && (
                       <div className="mb-5 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-lg p-4 border-l-4 border-blue-600 shadow-sm animate-fade-in">
-                        <div className="flex items-center gap-2 mb-2">
-                          <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
-                            <span className="text-white text-sm">✨</span>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
+                              <span className="text-white text-sm">✨</span>
+                            </div>
+                            <p className="text-xs font-bold text-blue-900 uppercase tracking-wider">
+                              Investment Rationale
+                            </p>
                           </div>
-                          <p className="text-xs font-bold text-blue-900 uppercase tracking-wider">
-                            AI Investment Rationale
-                          </p>
+                          {!isApproved && (
+                            <div className="flex gap-2">
+                              <button
+                                onClick={() => handleApprove(company.id)}
+                                className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded uppercase tracking-wide transition-colors shadow-sm"
+                              >
+                                ✓ Approve
+                              </button>
+                              <button
+                                onClick={() => handleReject(company.id)}
+                                className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded uppercase tracking-wide transition-colors shadow-sm"
+                              >
+                                ✕ Reject
+                              </button>
+                            </div>
+                          )}
+                          {isApproved && (
+                            <span className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded uppercase tracking-wide shadow-sm">
+                              ✓ Approved
+                            </span>
+                          )}
                         </div>
                         <p className="text-gray-800 leading-relaxed text-sm pl-8">{company.reasoning}</p>
                       </div>
@@ -409,9 +541,198 @@ function App() {
             </div>
           </div>
         )}
+          </>
+        )}
+
+        {/* Final Analysis Section */}
+        {showFinalAnalysis && approvedCompaniesList.length > 0 && (
+          <div className="animate-slide-up">
+            <div className="bg-white rounded-lg shadow-lg border border-gray-300 p-8 mb-6">
+              <div className="text-center mb-8">
+                <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg shadow-lg mb-4">
+                  <span className="text-2xl font-bold">✓ Review Complete</span>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Final Portfolio Analysis</h2>
+                <p className="text-gray-600">
+                  {approvedCompaniesList.length} companies approved for client presentation
+                </p>
+              </div>
+
+              {/* Approved Companies with Compatibility Graph */}
+              <div className="space-y-6">
+                {approvedCompaniesList
+                  .sort((a, b) => getCompatibilityScore(b) - getCompatibilityScore(a))
+                  .map((company, index) => {
+                    const compatibilityScore = getCompatibilityScore(company)
+                    const shareholderScore = getShareholderScore(company.shareholders)
+                    
+                    return (
+                      <div
+                        key={company.id}
+                        className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200 shadow-md"
+                        style={{
+                          animation: `slideUp 0.5s ease-out ${index * 100}ms forwards`,
+                          opacity: 0,
+                        }}
+                      >
+                        <div className="flex items-start gap-6">
+                          {/* Company Info */}
+                          <div className="flex-shrink-0">
+                            {company.logo ? (
+                              <img 
+                                src={company.logo} 
+                                alt={company.name}
+                                className="w-16 h-16 object-contain rounded-lg shadow-lg bg-white p-2"
+                                onError={(e) => {
+                                  e.target.style.display = 'none'
+                                  e.target.nextSibling.style.display = 'flex'
+                                }}
+                              />
+                            ) : null}
+                            <div 
+                              className={`w-16 h-16 rounded-lg ${getInitialsColor(company.confidence)} items-center justify-center shadow-lg`}
+                              style={{ display: company.logo ? 'none' : 'flex' }}
+                            >
+                              <span className="text-white text-xl font-bold tracking-tight">
+                                {getCompanyInitials(company.name)}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <div className="flex-1">
+                            <div className="flex items-start justify-between mb-4">
+                              <div>
+                                <h3 className="text-xl font-bold text-gray-900 mb-1">{company.name}</h3>
+                                <div className="flex gap-2">
+                                  <span className="px-2 py-1 bg-green-600 text-white text-xs font-bold rounded uppercase">
+                                    ✓ Approved
+                                  </span>
+                                  <span className="px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded">
+                                    Rank #{index + 1}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="text-center">
+                                <div className="text-xs text-gray-600 font-bold uppercase mb-1">Compatibility</div>
+                                <div className="text-3xl font-bold text-green-600">{compatibilityScore}%</div>
+                              </div>
+                            </div>
+
+                            {/* Compatibility Breakdown */}
+                            <div className="grid grid-cols-3 gap-4 mb-4">
+                              <div className="bg-white rounded-lg p-3 border border-gray-200">
+                                <div className="text-xs text-gray-600 font-bold uppercase mb-2">Market Score</div>
+                                <div className="flex items-center gap-2">
+                                  <div className="flex-1 bg-gray-200 rounded-full h-2">
+                                    <div 
+                                      className="bg-blue-600 h-2 rounded-full transition-all duration-1000"
+                                      style={{ width: `${company.confidence}%` }}
+                                    ></div>
+                                  </div>
+                                  <span className="text-sm font-bold text-blue-600">{company.confidence}</span>
+                                </div>
+                              </div>
+                              
+                              <div className="bg-white rounded-lg p-3 border border-gray-200">
+                                <div className="text-xs text-gray-600 font-bold uppercase mb-2">Client Fit</div>
+                                <div className="flex items-center gap-2">
+                                  <div className="flex-1 bg-gray-200 rounded-full h-2">
+                                    <div 
+                                      className="bg-purple-600 h-2 rounded-full transition-all duration-1000"
+                                      style={{ width: `${company.confidenceB}%` }}
+                                    ></div>
+                                  </div>
+                                  <span className="text-sm font-bold text-purple-600">{company.confidenceB}</span>
+                                </div>
+                              </div>
+                              
+                              <div className="bg-white rounded-lg p-3 border border-gray-200">
+                                <div className="text-xs text-gray-600 font-bold uppercase mb-2">Shareholder Quality</div>
+                                <div className="flex items-center gap-2">
+                                  <div className="flex-1 bg-gray-200 rounded-full h-2">
+                                    <div 
+                                      className="bg-amber-600 h-2 rounded-full transition-all duration-1000"
+                                      style={{ width: `${shareholderScore}%` }}
+                                    ></div>
+                                  </div>
+                                  <span className="text-sm font-bold text-amber-600">{shareholderScore}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Visual Compatibility Graph */}
+                            <div className="bg-white rounded-lg p-4 border border-gray-200">
+                              <div className="text-xs font-bold text-gray-700 uppercase mb-3">Overall Compatibility Score</div>
+                              <div className="relative">
+                                <div className="flex justify-between text-xs text-gray-500 mb-2">
+                                  <span>Low</span>
+                                  <span>Medium</span>
+                                  <span>High</span>
+                                  <span>Excellent</span>
+                                </div>
+                                <div className="w-full h-8 bg-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-green-400 rounded-full relative overflow-hidden">
+                                  <div 
+                                    className="absolute top-0 h-full w-1 bg-gray-900 shadow-lg transition-all duration-1000"
+                                    style={{ 
+                                      left: `${compatibilityScore}%`,
+                                      transform: 'translateX(-50%)'
+                                    }}
+                                  >
+                                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
+                                      {compatibilityScore}%
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Financial Metrics */}
+                            {company.revenue && (
+                              <div className="grid grid-cols-2 gap-3 mt-4">
+                                <div className="bg-white px-4 py-2 rounded border border-gray-200 text-center">
+                                  <div className="text-xs text-gray-600 font-bold uppercase">Revenue</div>
+                                  <div className="text-lg font-bold text-gray-900">{company.revenue}</div>
+                                </div>
+                                <div className="bg-white px-4 py-2 rounded border border-gray-200 text-center">
+                                  <div className="text-xs text-gray-600 font-bold uppercase">EBITDA</div>
+                                  <div className="text-lg font-bold text-gray-900">{company.ebitda}</div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+              </div>
+
+              {/* Summary Stats */}
+              <div className="mt-8 grid grid-cols-3 gap-4">
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
+                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                    {Math.round(approvedCompaniesList.reduce((acc, c) => acc + getCompatibilityScore(c), 0) / approvedCompaniesList.length)}%
+                  </div>
+                  <div className="text-xs text-gray-700 font-bold uppercase">Avg Compatibility</div>
+                </div>
+                <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200">
+                  <div className="text-3xl font-bold text-green-600 mb-1">
+                    {approvedCompaniesList.length}
+                  </div>
+                  <div className="text-xs text-gray-700 font-bold uppercase">Companies Selected</div>
+                </div>
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200">
+                  <div className="text-3xl font-bold text-purple-600 mb-1">
+                    {Math.max(...approvedCompaniesList.map(c => getCompatibilityScore(c)))}%
+                  </div>
+                  <div className="text-xs text-gray-700 font-bold uppercase">Top Match Score</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Empty State */}
-        {!selectedCustomer && (
+        {!selectedCustomer && !showFinalAnalysis && (
           <div className="animate-fade-in bg-white rounded shadow border border-gray-300 p-12">
             <div className="max-w-3xl mx-auto">
               <div className="border-l-4 border-blue-600 pl-6">
@@ -432,9 +753,9 @@ function App() {
                   </div>
                   <div className="p-5 bg-gradient-to-br from-blue-50 to-white rounded border border-blue-200">
                     <div className="text-blue-600 font-bold text-sm mb-2 uppercase tracking-wider">Agent 2</div>
-                    <div className="text-lg font-bold text-gray-900 mb-2">Tailor</div>
+                    <div className="text-lg font-bold text-gray-900 mb-2">Customer Persona</div>
                     <div className="text-xs text-gray-600 leading-relaxed">
-                      Customizes recommendations based on client history and preferences
+                      Impersonates the client's preferences to tailor recommendations to their unique profile
                     </div>
                   </div>
                   <div className="p-5 bg-gradient-to-br from-blue-50 to-white rounded border border-blue-200">
@@ -461,6 +782,28 @@ function App() {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+        
+        @keyframes swipeOut {
+          0% {
+            opacity: 1;
+            transform: translateX(0) rotateZ(0deg);
+          }
+          50% {
+            opacity: 0.5;
+            transform: translateX(-50px) rotateZ(-5deg);
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(-120%) rotateZ(-10deg);
+            height: 0;
+            margin: 0;
+            padding: 0;
+          }
+        }
+        
+        .swipe-out {
+          animation: swipeOut 0.4s ease-in forwards;
         }
         
         .animate-fade-in {
