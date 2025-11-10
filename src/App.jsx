@@ -234,7 +234,7 @@ function App() {
         )}
 
         {/* Action Buttons */}
-        {selectedCustomer && (
+        {selectedCustomer && !showFinalAnalysis && (
           <div className="flex gap-3 mb-5 animate-slide-up">
             <button
               onClick={handleOptimize}
@@ -547,19 +547,56 @@ function App() {
         {/* Final Analysis Section */}
         {showFinalAnalysis && approvedCompaniesList.length > 0 && (
           <div className="animate-slide-up">
-            <div className="bg-white rounded-lg shadow-lg border border-gray-300 p-8 mb-6">
-              <div className="text-center mb-8">
-                <div className="inline-block px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg shadow-lg mb-4">
-                  <span className="text-2xl font-bold">✓ Review Complete</span>
+            {/* Header Section */}
+            <div className="bg-white border-b-4 border-blue-800 shadow-md mb-6">
+              <div className="px-8 py-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-2">Portfolio Analysis Report</h2>
+                    <p className="text-base text-gray-700 font-medium">Generated on {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-sm text-gray-800 font-bold uppercase tracking-wide mb-1">Selected Companies</div>
+                    <div className="text-5xl font-bold text-blue-800">{approvedCompaniesList.length}</div>
+                  </div>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">Final Portfolio Analysis</h2>
-                <p className="text-gray-600">
-                  {approvedCompaniesList.length} companies approved for client presentation
-                </p>
               </div>
+            </div>
 
-              {/* Approved Companies with Compatibility Graph */}
-              <div className="space-y-6">
+            {/* Summary Metrics */}
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="bg-white border-2 border-gray-300 shadow-md">
+                <div className="px-4 py-3 bg-gray-100 border-b-2 border-gray-300">
+                  <div className="text-sm font-bold text-gray-900 uppercase tracking-wide">Average Compatibility</div>
+                </div>
+                <div className="px-4 py-5 text-center">
+                  <div className="text-4xl font-bold text-blue-900">
+                    {Math.round(approvedCompaniesList.reduce((acc, c) => acc + getCompatibilityScore(c), 0) / approvedCompaniesList.length)}%
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white border-2 border-gray-300 shadow-md">
+                <div className="px-4 py-3 bg-gray-100 border-b-2 border-gray-300">
+                  <div className="text-sm font-bold text-gray-900 uppercase tracking-wide">Top Match Score</div>
+                </div>
+                <div className="px-4 py-5 text-center">
+                  <div className="text-4xl font-bold text-blue-900">
+                    {Math.max(...approvedCompaniesList.map(c => getCompatibilityScore(c)))}%
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white border-2 border-gray-300 shadow-md">
+                <div className="px-4 py-3 bg-gray-100 border-b-2 border-gray-300">
+                  <div className="text-sm font-bold text-gray-900 uppercase tracking-wide">Portfolio Status</div>
+                </div>
+                <div className="px-4 py-5 text-center">
+                  <div className="text-2xl font-bold text-green-700 uppercase tracking-wide">Approved</div>
+                </div>
+              </div>
+            </div>
+
+              {/* Approved Companies List */}
+              <div className="space-y-4">
                 {approvedCompaniesList
                   .sort((a, b) => getCompatibilityScore(b) - getCompatibilityScore(a))
                   .map((company, index) => {
@@ -569,165 +606,159 @@ function App() {
                     return (
                       <div
                         key={company.id}
-                        className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200 shadow-md"
+                        className="bg-white border border-gray-300 shadow-sm"
                         style={{
                           animation: `slideUp 0.5s ease-out ${index * 100}ms forwards`,
                           opacity: 0,
                         }}
                       >
-                        <div className="flex items-start gap-6">
-                          {/* Company Logo */}
-                          <div className="flex-shrink-0">
-                            {company.logo ? (
-                              <img 
-                                src={company.logo} 
-                                alt=""
-                                className="w-20 h-20 object-contain rounded-lg shadow-lg bg-white p-2 border-2 border-gray-200"
-                                onError={(e) => {
-                                  e.target.style.display = 'none'
-                                  e.target.nextSibling.style.display = 'flex'
-                                }}
-                              />
-                            ) : null}
-                            <div 
-                              className={`w-20 h-20 rounded-lg ${getInitialsColor(company.confidence)} items-center justify-center shadow-lg border-2 border-gray-200`}
-                              style={{ display: company.logo ? 'none' : 'flex' }}
-                            >
-                              <span className="text-white text-2xl font-bold tracking-tight">
-                                {getCompanyInitials(company.name)}
-                              </span>
-                            </div>
-                          </div>
-                          
-                          <div className="flex-1">
-                            <div className="flex items-start justify-between mb-6">
-                              <div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-3">{company.name}</h3>
-                                <div className="flex gap-2 items-center">
-                                  <span className="px-3 py-1.5 bg-green-600 text-white text-xs font-bold rounded-full uppercase tracking-wide">
-                                    ✓ Approved
-                                  </span>
-                                  <span className="px-3 py-1.5 bg-blue-600 text-white text-xs font-bold rounded-full uppercase tracking-wide">
-                                    Rank #{index + 1}
-                                  </span>
-                                </div>
+                        {/* Company Header */}
+                        <div className="bg-gray-100 border-b-2 border-gray-300 px-6 py-5">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              {/* Rank Badge */}
+                              <div className="w-12 h-12 bg-blue-900 text-white rounded flex items-center justify-center font-bold text-xl shadow-md">
+                                {index + 1}
                               </div>
-                              <div className="text-right bg-white rounded-lg px-6 py-3 border-2 border-green-300 shadow">
-                                <div className="text-xs text-gray-600 font-bold uppercase tracking-wider mb-1">Overall Compatibility</div>
-                                <div className="text-4xl font-bold text-green-600">{compatibilityScore}%</div>
-                              </div>
-                            </div>
-
-                            {/* Compatibility Breakdown */}
-                            <div className="grid grid-cols-3 gap-4 mb-4">
-                              <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                <div className="text-xs text-gray-600 font-bold uppercase mb-2">Market Score</div>
-                                <div className="flex items-center gap-2">
-                                  <div className="flex-1 bg-gray-200 rounded-full h-2">
-                                    <div 
-                                      className="bg-blue-600 h-2 rounded-full transition-all duration-1000"
-                                      style={{ width: `${company.confidence}%` }}
-                                    ></div>
-                                  </div>
-                                  <span className="text-sm font-bold text-blue-600">{company.confidence}</span>
-                                </div>
-                              </div>
-                              
-                              <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                <div className="text-xs text-gray-600 font-bold uppercase mb-2">Client Fit</div>
-                                <div className="flex items-center gap-2">
-                                  <div className="flex-1 bg-gray-200 rounded-full h-2">
-                                    <div 
-                                      className="bg-purple-600 h-2 rounded-full transition-all duration-1000"
-                                      style={{ width: `${company.confidenceB}%` }}
-                                    ></div>
-                                  </div>
-                                  <span className="text-sm font-bold text-purple-600">{company.confidenceB}</span>
-                                </div>
-                              </div>
-                              
-                              <div className="bg-white rounded-lg p-3 border border-gray-200">
-                                <div className="text-xs text-gray-600 font-bold uppercase mb-2">Shareholder Quality</div>
-                                <div className="flex items-center gap-2">
-                                  <div className="flex-1 bg-gray-200 rounded-full h-2">
-                                    <div 
-                                      className="bg-amber-600 h-2 rounded-full transition-all duration-1000"
-                                      style={{ width: `${shareholderScore}%` }}
-                                    ></div>
-                                  </div>
-                                  <span className="text-sm font-bold text-amber-600">{shareholderScore}</span>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Visual Compatibility Graph */}
-                            <div className="bg-white rounded-lg p-4 border border-gray-200">
-                              <div className="text-xs font-bold text-gray-700 uppercase mb-3">Overall Compatibility Score</div>
-                              <div className="relative">
-                                <div className="flex justify-between text-xs text-gray-500 mb-2">
-                                  <span>Low</span>
-                                  <span>Medium</span>
-                                  <span>High</span>
-                                  <span>Excellent</span>
-                                </div>
-                                <div className="w-full h-8 bg-gradient-to-r from-red-200 via-yellow-200 via-green-200 to-green-400 rounded-full relative overflow-hidden">
-                                  <div 
-                                    className="absolute top-0 h-full w-1 bg-gray-900 shadow-lg transition-all duration-1000"
-                                    style={{ 
-                                      left: `${compatibilityScore}%`,
-                                      transform: 'translateX(-50%)'
+                              {/* Company Logo */}
+                              <div className="flex-shrink-0">
+                                {company.logo ? (
+                                  <img 
+                                    src={company.logo} 
+                                    alt=""
+                                    className="w-14 h-14 object-contain bg-white p-1.5 border-2 border-gray-300 shadow-sm"
+                                    onError={(e) => {
+                                      e.target.style.display = 'none'
+                                      e.target.nextSibling.style.display = 'flex'
                                     }}
-                                  >
-                                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
-                                      {compatibilityScore}%
-                                    </div>
-                                  </div>
+                                  />
+                                ) : null}
+                                <div 
+                                  className={`w-14 h-14 ${getInitialsColor(company.confidence)} items-center justify-center border-2 border-gray-300 shadow-sm`}
+                                  style={{ display: company.logo ? 'none' : 'flex' }}
+                                >
+                                  <span className="text-white text-base font-bold tracking-tight">
+                                    {getCompanyInitials(company.name)}
+                                  </span>
+                                </div>
+                              </div>
+                              <div>
+                                <h3 className="text-2xl font-bold text-gray-900">{company.name}</h3>
+                                <div className="text-sm text-gray-700 font-medium mt-1">Target Company</div>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm text-gray-800 font-bold uppercase tracking-wide mb-1">Compatibility Score</div>
+                              <div className="text-4xl font-bold text-blue-900">{compatibilityScore}%</div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="p-6">
+                          {/* Score Breakdown Table */}
+                          <div className="mb-6">
+                            <div className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3 border-b-2 border-gray-300 pb-2">
+                              Compatibility Analysis
+                            </div>
+                            <div className="grid grid-cols-3 gap-4">
+                              <div className="border-2 border-gray-300 bg-gray-50 p-4">
+                                <div className="text-xs text-gray-800 font-bold uppercase tracking-wide mb-2">Market Score</div>
+                                <div className="flex items-end gap-2">
+                                  <span className="text-3xl font-bold text-gray-900">{company.confidence}</span>
+                                  <span className="text-gray-700 font-bold text-sm mb-1">/ 100</span>
+                                </div>
+                                <div className="mt-3 bg-gray-300 h-2 w-full rounded">
+                                  <div 
+                                    className="bg-blue-800 h-2 rounded transition-all duration-1000"
+                                    style={{ width: `${company.confidence}%` }}
+                                  ></div>
+                                </div>
+                              </div>
+                              
+                              <div className="border-2 border-gray-300 bg-gray-50 p-4">
+                                <div className="text-xs text-gray-800 font-bold uppercase tracking-wide mb-2">Client Fit</div>
+                                <div className="flex items-end gap-2">
+                                  <span className="text-3xl font-bold text-gray-900">{company.confidenceB}</span>
+                                  <span className="text-gray-700 font-bold text-sm mb-1">/ 100</span>
+                                </div>
+                                <div className="mt-3 bg-gray-300 h-2 w-full rounded">
+                                  <div 
+                                    className="bg-blue-800 h-2 rounded transition-all duration-1000"
+                                    style={{ width: `${company.confidenceB}%` }}
+                                  ></div>
+                                </div>
+                              </div>
+                              
+                              <div className="border-2 border-gray-300 bg-gray-50 p-4">
+                                <div className="text-xs text-gray-800 font-bold uppercase tracking-wide mb-2">Shareholder Quality</div>
+                                <div className="flex items-end gap-2">
+                                  <span className="text-3xl font-bold text-gray-900">{shareholderScore}</span>
+                                  <span className="text-gray-700 font-bold text-sm mb-1">/ 100</span>
+                                </div>
+                                <div className="mt-3 bg-gray-300 h-2 w-full rounded">
+                                  <div 
+                                    className="bg-blue-800 h-2 rounded transition-all duration-1000"
+                                    style={{ width: `${shareholderScore}%` }}
+                                  ></div>
                                 </div>
                               </div>
                             </div>
+                          </div>
 
-                            {/* Financial Metrics */}
-                            {company.revenue && (
-                              <div className="grid grid-cols-2 gap-3 mt-4">
-                                <div className="bg-white px-4 py-2 rounded border border-gray-200 text-center">
-                                  <div className="text-xs text-gray-600 font-bold uppercase">Revenue</div>
-                                  <div className="text-lg font-bold text-gray-900">{company.revenue}</div>
+                          {/* Financial Data */}
+                          {company.revenue && (
+                            <div className="mb-6">
+                              <div className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3 border-b-2 border-gray-300 pb-2">
+                                Financial Metrics
+                              </div>
+                              <div className="grid grid-cols-2 gap-4">
+                                <div className="border-2 border-gray-300 bg-white p-4">
+                                  <div className="text-xs text-gray-800 font-bold uppercase tracking-wide mb-2">Revenue</div>
+                                  <div className="text-2xl font-bold text-gray-900">{company.revenue}</div>
                                 </div>
-                                <div className="bg-white px-4 py-2 rounded border border-gray-200 text-center">
-                                  <div className="text-xs text-gray-600 font-bold uppercase">EBITDA</div>
-                                  <div className="text-lg font-bold text-gray-900">{company.ebitda}</div>
+                                <div className="border-2 border-gray-300 bg-white p-4">
+                                  <div className="text-xs text-gray-800 font-bold uppercase tracking-wide mb-2">EBITDA</div>
+                                  <div className="text-2xl font-bold text-gray-900">{company.ebitda}</div>
                                 </div>
                               </div>
-                            )}
-                          </div>
+                            </div>
+                          )}
+
+                          {/* Shareholders */}
+                          {company.shareholders && company.shareholders.length > 0 && (
+                            <div className="mb-6">
+                              <div className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3 border-b-2 border-gray-300 pb-2">
+                                Key Shareholders
+                              </div>
+                              <div className="bg-gray-50 border-2 border-gray-300 p-4">
+                                <ul className="text-sm text-gray-900 space-y-2 font-medium">
+                                  {company.shareholders.slice(0, 5).map((sh, i) => (
+                                    <li key={i} className="flex items-start gap-2">
+                                      <span className="text-blue-800 mt-0.5 font-bold">•</span>
+                                      <span>{sh}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Investment Rationale */}
+                          {company.reasoning && (
+                            <div>
+                              <div className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3 border-b-2 border-gray-300 pb-2">
+                                Investment Rationale
+                              </div>
+                              <div className="bg-blue-50 border-2 border-blue-300 p-4">
+                                <p className="text-base text-gray-900 leading-relaxed font-medium">{company.reasoning}</p>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     )
                   })}
               </div>
-
-              {/* Summary Stats */}
-              <div className="mt-8 grid grid-cols-3 gap-4">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 text-center border border-blue-200">
-                  <div className="text-3xl font-bold text-blue-600 mb-1">
-                    {Math.round(approvedCompaniesList.reduce((acc, c) => acc + getCompatibilityScore(c), 0) / approvedCompaniesList.length)}%
-                  </div>
-                  <div className="text-xs text-gray-700 font-bold uppercase">Avg Compatibility</div>
-                </div>
-                <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4 text-center border border-green-200">
-                  <div className="text-3xl font-bold text-green-600 mb-1">
-                    {approvedCompaniesList.length}
-                  </div>
-                  <div className="text-xs text-gray-700 font-bold uppercase">Companies Selected</div>
-                </div>
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4 text-center border border-purple-200">
-                  <div className="text-3xl font-bold text-purple-600 mb-1">
-                    {Math.max(...approvedCompaniesList.map(c => getCompatibilityScore(c)))}%
-                  </div>
-                  <div className="text-xs text-gray-700 font-bold uppercase">Top Match Score</div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
