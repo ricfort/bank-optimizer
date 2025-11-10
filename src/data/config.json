@@ -1,0 +1,1571 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "TechCorp Industries",
+      "type": "Technology Conglomerate"
+    },
+    {
+      "id": 2,
+      "name": "Global Finance Partners",
+      "type": "Investment Firm"
+    }
+  ],
+  "companies": {
+    "1": [
+      {
+        "id": 87,
+        "name": "Jet Tech",
+        "confidence": 100,
+        "confidenceB": 96,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=jet",
+        "revenue": "$892M",
+        "ebitda": "$267M",
+        "shareholders": [
+          "Aerospace Fund",
+          "Defense Contractors",
+          "Employee Owned (29%)"
+        ],
+        "reasoning": "Next-gen propulsion systems with military and commercial applications. Backlog of $2B+ provides revenue visibility."
+      },
+      {
+        "id": 86,
+        "name": "Ionic Dynamics",
+        "confidence": 99,
+        "confidenceB": 94,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=ionic",
+        "revenue": "$721M",
+        "ebitda": "$216M",
+        "shareholders": [
+          "Ion Ventures",
+          "Strategic Alliance Partners",
+          "Public (42%)"
+        ],
+        "reasoning": "Market-leading SaaS platform with 140% net revenue retention. Expansion into international markets underway."
+      },
+      {
+        "id": 85,
+        "name": "Hyper Systems",
+        "confidence": 98,
+        "confidenceB": 87,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=hyper",
+        "revenue": "$634M",
+        "ebitda": "$189M",
+        "shareholders": [
+          "Hyper Growth Fund",
+          "Institutional Heavyweights",
+          "Management (19%)"
+        ],
+        "reasoning": "Hyperscale cloud infrastructure provider. Amazon/Microsoft partnerships de-risk growth trajectory."
+      },
+      {
+        "id": 84,
+        "name": "Glow Industries",
+        "confidence": 97,
+        "confidenceB": 91,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=glow",
+        "revenue": "$556M",
+        "ebitda": "$167M",
+        "shareholders": [
+          "Illumination Capital",
+          "Strategic Corporates",
+          "ESOP (24%)"
+        ],
+        "reasoning": "LED and smart lighting systems with IoT integration. Smart city contracts provide stable long-term revenue."
+      },
+      {
+        "id": 83,
+        "name": "Flash Solutions",
+        "confidence": 96,
+        "confidenceB": 85,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=flash",
+        "revenue": "$423M",
+        "ebitda": "$127M",
+        "shareholders": [
+          "Speed Ventures",
+          "Tech Unicorn Fund",
+          "Founders (32%)"
+        ],
+        "reasoning": "Real-time data processing platform with Fortune 500 clients. Best-in-class technology with 99.99% uptime SLA."
+      },
+      {
+        "id": 1,
+        "name": "Acme Software Solutions",
+        "confidence": 95,
+        "confidenceB": 88,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=acme",
+        "revenue": "$125M",
+        "ebitda": "$38M",
+        "shareholders": [
+          "TechVentures LP",
+          "Innovation Capital",
+          "Founders (35%)"
+        ],
+        "reasoning": "Strong product-market fit with 40% YoY growth. Recent expansion into enterprise segment shows promising traction."
+      },
+      {
+        "id": 41,
+        "name": "Phoenix Industries",
+        "confidence": 94,
+        "confidenceB": 87,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=phoenix",
+        "revenue": "$445M",
+        "ebitda": "$112M",
+        "shareholders": [
+          "Phoenix Capital",
+          "Institutional Mix",
+          "Employee Owned (25%)"
+        ],
+        "reasoning": "Market leader in industrial automation. Strong balance sheet with minimal debt and growing free cash flow."
+      },
+      {
+        "id": 82,
+        "name": "Edge Group",
+        "confidence": 93,
+        "confidenceB": 93,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=edge",
+        "revenue": "$512M",
+        "ebitda": "$143M",
+        "shareholders": [
+          "Edge Capital",
+          "Sovereign Funds",
+          "Public Float (45%)"
+        ],
+        "reasoning": "Edge computing infrastructure leader. 5G rollout creates massive TAM expansion opportunity."
+      },
+      {
+        "id": 2,
+        "name": "Beta Technologies",
+        "confidence": 92,
+        "confidenceB": 91,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=beta",
+        "revenue": "$220M",
+        "ebitda": "$52M",
+        "shareholders": [
+          "Global Tech Fund",
+          "Strategic Partners Inc",
+          "Management (28%)"
+        ],
+        "reasoning": "Industry leader with consistent profitability. Strong management team and proven execution track record."
+      },
+      {
+        "id": 81,
+        "name": "Diamond Tech",
+        "confidence": 91,
+        "confidenceB": 89,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=diamond",
+        "revenue": "$389M",
+        "ebitda": "$98M",
+        "shareholders": [
+          "Luxury Tech Ventures",
+          "Family Office Consortium",
+          "Management (21%)"
+        ],
+        "reasoning": "Premium tech accessories with luxury brand partnerships. High margins and recurring revenue model."
+      },
+      {
+        "id": 42,
+        "name": "Quasar Systems",
+        "confidence": 90,
+        "confidenceB": 92,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=quasar",
+        "revenue": "$278M",
+        "ebitda": "$89M",
+        "shareholders": [
+          "Quantum Ventures",
+          "Strategic Tech",
+          "Founders (30%)"
+        ],
+        "reasoning": "Quantum computing pioneer with first-mover advantage. Patent portfolio valued at $50M+ creates strong moat."
+      },
+      {
+        "id": 3,
+        "name": "Cipher Innovations",
+        "confidence": 89,
+        "confidenceB": 76,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=cipher",
+        "revenue": "$95M",
+        "ebitda": "$22M",
+        "shareholders": [
+          "Cyber Ventures",
+          "Defense Capital",
+          "Employee Stock (20%)"
+        ],
+        "reasoning": "Emerging cybersecurity player with government contracts. Recent FDA approval opens new revenue streams."
+      },
+      {
+        "id": 43,
+        "name": "Rift Dynamics",
+        "confidence": 88,
+        "confidenceB": 79,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=rift",
+        "revenue": "$156M",
+        "ebitda": "$37M",
+        "shareholders": [
+          "Gaming Ventures",
+          "Media Fund",
+          "Management (22%)"
+        ],
+        "reasoning": "VR/AR technology leader with partnerships across gaming and enterprise. Metaverse positioning ahead of curve."
+      },
+      {
+        "id": 4,
+        "name": "Delta Systems",
+        "confidence": 87,
+        "confidenceB": 85,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=delta",
+        "revenue": "$180M",
+        "ebitda": "$45M",
+        "shareholders": [
+          "Enterprise Growth Fund",
+          "Delta Founders",
+          "PE Investors (45%)"
+        ],
+        "reasoning": "Well-positioned in infrastructure automation. Strong customer retention rate of 95% indicates solid fundamentals."
+      },
+      {
+        "id": 44,
+        "name": "Spark Tech",
+        "confidence": 86,
+        "confidenceB": 84,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=spark",
+        "revenue": "$201M",
+        "ebitda": "$55M",
+        "shareholders": [
+          "Energy Tech Fund",
+          "Green Capital",
+          "Public (38%)"
+        ],
+        "reasoning": "Battery technology breakthrough with automotive OEM contracts. ESG credentials align with portfolio strategy."
+      },
+      {
+        "id": 5,
+        "name": "Echo Enterprises",
+        "confidence": 85,
+        "confidenceB": 82,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=echo",
+        "revenue": "$310M",
+        "ebitda": "$68M",
+        "shareholders": [
+          "Echo Holdings",
+          "Institutional Investors",
+          "Public Float (40%)"
+        ],
+        "reasoning": "Diversified revenue streams across 3 continents. Recent M&A activity strengthens market position."
+      },
+      {
+        "id": 45,
+        "name": "Terra Solutions",
+        "confidence": 84,
+        "confidenceB": 88,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=terra",
+        "revenue": "$332M",
+        "ebitda": "$91M",
+        "shareholders": [
+          "Earth Fund",
+          "Impact Investors",
+          "Employee Trust (27%)"
+        ],
+        "reasoning": "Carbon capture technology with government incentives. Regulatory tailwinds support 3-year growth trajectory."
+      },
+      {
+        "id": 6,
+        "name": "Fusion Dynamics",
+        "confidence": 83,
+        "confidenceB": 79,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=fusion",
+        "revenue": "$145M",
+        "ebitda": "$31M",
+        "shareholders": [
+          "Energy Ventures",
+          "Clean Tech Fund",
+          "Founders (42%)"
+        ],
+        "reasoning": "Clean energy tech with strong IP portfolio. Government subsidies provide stable revenue base."
+      },
+      {
+        "id": 46,
+        "name": "Unity Group",
+        "confidence": 82,
+        "confidenceB": 71
+      },
+      {
+        "id": 7,
+        "name": "Gamma Tech Group",
+        "confidence": 81,
+        "confidenceB": 88,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=gamma",
+        "revenue": "$265M",
+        "ebitda": "$71M",
+        "shareholders": [
+          "Tech Giants Co-Investment",
+          "Sovereign Wealth Fund",
+          "Employees (18%)"
+        ],
+        "reasoning": "AI/ML capabilities align with customer's strategic initiatives. Strong synergies with existing portfolio."
+      },
+      {
+        "id": 47,
+        "name": "Vortex Enterprises",
+        "confidence": 80,
+        "confidenceB": 86
+      },
+      {
+        "id": 8,
+        "name": "Horizon Industries",
+        "confidence": 79,
+        "confidenceB": 73,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=horizon",
+        "revenue": "$190M",
+        "ebitda": "$41M",
+        "shareholders": [
+          "Industrial Partners",
+          "Family Office",
+          "Management (33%)"
+        ],
+        "reasoning": "Manufacturing excellence with automation capabilities. Supply chain resilience proven during recent disruptions."
+      },
+      {
+        "id": 48,
+        "name": "Warp Industries",
+        "confidence": 78,
+        "confidenceB": 74
+      },
+      {
+        "id": 9,
+        "name": "Infinity Labs",
+        "confidence": 77,
+        "confidenceB": 90,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=infinity",
+        "revenue": "$88M",
+        "ebitda": "$28M",
+        "shareholders": [
+          "BioTech Ventures",
+          "University Endowment",
+          "Scientific Founders (50%)"
+        ],
+        "reasoning": "Breakthrough R&D in biotech sector. Three products in late-stage clinical trials with high success probability."
+      },
+      {
+        "id": 49,
+        "name": "Xenon Systems",
+        "confidence": 76,
+        "confidenceB": 82
+      },
+      {
+        "id": 10,
+        "name": "Jupiter Systems",
+        "confidence": 75,
+        "confidenceB": 68,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=jupiter",
+        "revenue": "$210M",
+        "ebitda": "$48M",
+        "shareholders": [
+          "Space Tech Fund",
+          "Strategic Corporate",
+          "Public (35%)"
+        ],
+        "reasoning": "Aerospace components supplier with NASA contracts. Space economy tailwinds support long-term growth."
+      },
+      {
+        "id": 50,
+        "name": "Yttrium Tech",
+        "confidence": 74,
+        "confidenceB": 77
+      },
+      {
+        "id": 11,
+        "name": "Kinetic Solutions",
+        "confidence": 73,
+        "confidenceB": 81
+      },
+      {
+        "id": 51,
+        "name": "Zephyr Solutions",
+        "confidence": 72,
+        "confidenceB": 90
+      },
+      {
+        "id": 12,
+        "name": "Lunar Technologies",
+        "confidence": 71,
+        "confidenceB": 77
+      },
+      {
+        "id": 52,
+        "name": "Atlas Dynamics",
+        "confidence": 70,
+        "confidenceB": 65
+      },
+      {
+        "id": 13,
+        "name": "Matrix Innovations",
+        "confidence": 69,
+        "confidenceB": 65
+      },
+      {
+        "id": 53,
+        "name": "Beacon Group",
+        "confidence": 68,
+        "confidenceB": 81
+      },
+      {
+        "id": 14,
+        "name": "Nova Enterprises",
+        "confidence": 67,
+        "confidenceB": 72
+      },
+      {
+        "id": 54,
+        "name": "Crimson Tech",
+        "confidence": 66,
+        "confidenceB": 73
+      },
+      {
+        "id": 15,
+        "name": "Omega Systems",
+        "confidence": 65,
+        "confidenceB": 83
+      },
+      {
+        "id": 55,
+        "name": "Draco Industries",
+        "confidence": 64,
+        "confidenceB": 68
+      },
+      {
+        "id": 16,
+        "name": "Pulse Tech",
+        "confidence": 63,
+        "confidenceB": 70
+      },
+      {
+        "id": 56,
+        "name": "Ember Systems",
+        "confidence": 62,
+        "confidenceB": 85
+      },
+      {
+        "id": 17,
+        "name": "Quantum Dynamics",
+        "confidence": 61,
+        "confidenceB": 66
+      },
+      {
+        "id": 57,
+        "name": "Flare Solutions",
+        "confidence": 60,
+        "confidenceB": 76
+      },
+      {
+        "id": 18,
+        "name": "Rhombus Solutions",
+        "confidence": 59,
+        "confidenceB": 75
+      },
+      {
+        "id": 58,
+        "name": "Griffin Tech",
+        "confidence": 58,
+        "confidenceB": 70
+      },
+      {
+        "id": 19,
+        "name": "Stellar Industries",
+        "confidence": 57,
+        "confidenceB": 62
+      },
+      {
+        "id": 59,
+        "name": "Haven Enterprises",
+        "confidence": 56,
+        "confidenceB": 62
+      },
+      {
+        "id": 20,
+        "name": "Titan Group",
+        "confidence": 55,
+        "confidenceB": 80
+      },
+      {
+        "id": 60,
+        "name": "Ignite Group",
+        "confidence": 54,
+        "confidenceB": 87
+      },
+      {
+        "id": 21,
+        "name": "Unified Technologies",
+        "confidence": 53,
+        "confidenceB": 58
+      },
+      {
+        "id": 61,
+        "name": "Jade Technologies",
+        "confidence": 52,
+        "confidenceB": 59
+      },
+      {
+        "id": 22,
+        "name": "Vector Systems",
+        "confidence": 51,
+        "confidenceB": 71
+      },
+      {
+        "id": 62,
+        "name": "Knight Solutions",
+        "confidence": 50,
+        "confidenceB": 78
+      },
+      {
+        "id": 23,
+        "name": "Wave Innovations",
+        "confidence": 49,
+        "confidenceB": 84
+      },
+      {
+        "id": 63,
+        "name": "Liberty Industries",
+        "confidence": 48,
+        "confidenceB": 66
+      },
+      {
+        "id": 24,
+        "name": "Xeon Enterprises",
+        "confidence": 47,
+        "confidenceB": 67
+      },
+      {
+        "id": 64,
+        "name": "Meteor Systems",
+        "confidence": 46,
+        "confidenceB": 72
+      },
+      {
+        "id": 25,
+        "name": "Zenith Tech",
+        "confidence": 45,
+        "confidenceB": 74
+      },
+      {
+        "id": 65,
+        "name": "Nexus Dynamics",
+        "confidence": 44,
+        "confidenceB": 80
+      },
+      {
+        "id": 26,
+        "name": "Alpine Solutions",
+        "confidence": 43,
+        "confidenceB": 69
+      },
+      {
+        "id": 66,
+        "name": "Onyx Tech",
+        "confidence": 42,
+        "confidenceB": 64
+      },
+      {
+        "id": 27,
+        "name": "Blaze Industries",
+        "confidence": 41,
+        "confidenceB": 78
+      },
+      {
+        "id": 67,
+        "name": "Prism Group",
+        "confidence": 40,
+        "confidenceB": 75
+      },
+      {
+        "id": 28,
+        "name": "Cascade Systems",
+        "confidence": 39,
+        "confidenceB": 63
+      },
+      {
+        "id": 68,
+        "name": "Quest Solutions",
+        "confidence": 38,
+        "confidenceB": 58
+      },
+      {
+        "id": 29,
+        "name": "Dawn Technologies",
+        "confidence": 37,
+        "confidenceB": 86
+      },
+      {
+        "id": 69,
+        "name": "Raven Enterprises",
+        "confidence": 36,
+        "confidenceB": 83
+      },
+      {
+        "id": 30,
+        "name": "Eclipse Group",
+        "confidence": 35,
+        "confidenceB": 60
+      },
+      {
+        "id": 70,
+        "name": "Summit Industries",
+        "confidence": 34,
+        "confidenceB": 67
+      },
+      {
+        "id": 31,
+        "name": "Forge Dynamics",
+        "confidence": 33,
+        "confidenceB": 72
+      },
+      {
+        "id": 71,
+        "name": "Trident Systems",
+        "confidence": 32,
+        "confidenceB": 71
+      },
+      {
+        "id": 32,
+        "name": "Genesis Tech",
+        "confidence": 31,
+        "confidenceB": 55
+      },
+      {
+        "id": 72,
+        "name": "Umbra Tech",
+        "confidence": 30,
+        "confidenceB": 54
+      },
+      {
+        "id": 33,
+        "name": "Helix Solutions",
+        "confidence": 29,
+        "confidenceB": 64
+      },
+      {
+        "id": 73,
+        "name": "Valor Solutions",
+        "confidence": 28,
+        "confidenceB": 79
+      },
+      {
+        "id": 34,
+        "name": "Iris Industries",
+        "confidence": 27,
+        "confidenceB": 81
+      },
+      {
+        "id": 74,
+        "name": "Wildfire Group",
+        "confidence": 26,
+        "confidenceB": 63
+      },
+      {
+        "id": 35,
+        "name": "Jolt Systems",
+        "confidence": 25,
+        "confidenceB": 57
+      },
+      {
+        "id": 75,
+        "name": "Xanadu Dynamics",
+        "confidence": 24,
+        "confidenceB": 88
+      },
+      {
+        "id": 36,
+        "name": "Kronos Tech",
+        "confidence": 23,
+        "confidenceB": 70
+      },
+      {
+        "id": 76,
+        "name": "Yonder Tech",
+        "confidence": 22,
+        "confidenceB": 56
+      },
+      {
+        "id": 37,
+        "name": "Legacy Enterprises",
+        "confidence": 21,
+        "confidenceB": 89
+      },
+      {
+        "id": 77,
+        "name": "Zodiac Industries",
+        "confidence": 20,
+        "confidenceB": 69
+      },
+      {
+        "id": 38,
+        "name": "Meridian Group",
+        "confidence": 19,
+        "confidenceB": 66
+      },
+      {
+        "id": 78,
+        "name": "Apex Solutions",
+        "confidence": 18,
+        "confidenceB": 75
+      },
+      {
+        "id": 39,
+        "name": "Nebula Solutions",
+        "confidence": 17,
+        "confidenceB": 75
+      },
+      {
+        "id": 79,
+        "name": "Bright Systems",
+        "confidence": 16,
+        "confidenceB": 61
+      },
+      {
+        "id": 40,
+        "name": "Orbit Technologies",
+        "confidence": 15,
+        "confidenceB": 52
+      },
+      {
+        "id": 80,
+        "name": "Cyber Enterprises",
+        "confidence": 14,
+        "confidenceB": 84
+      },
+      {
+        "id": 88,
+        "name": "Keystone Solutions",
+        "confidence": 13,
+        "confidenceB": 52
+      },
+      {
+        "id": 89,
+        "name": "Link Enterprises",
+        "confidence": 12,
+        "confidenceB": 68
+      },
+      {
+        "id": 90,
+        "name": "Magna Group",
+        "confidence": 11,
+        "confidenceB": 73
+      },
+      {
+        "id": 91,
+        "name": "North Industries",
+        "confidence": 10,
+        "confidenceB": 60
+      },
+      {
+        "id": 92,
+        "name": "Optic Systems",
+        "confidence": 9,
+        "confidenceB": 77
+      },
+      {
+        "id": 93,
+        "name": "Peak Tech",
+        "confidence": 8,
+        "confidenceB": 55
+      },
+      {
+        "id": 94,
+        "name": "Quick Solutions",
+        "confidence": 7,
+        "confidenceB": 82
+      },
+      {
+        "id": 95,
+        "name": "Ridge Dynamics",
+        "confidence": 6,
+        "confidenceB": 64
+      },
+      {
+        "id": 96,
+        "name": "Swift Group",
+        "confidence": 5,
+        "confidenceB": 71
+      },
+      {
+        "id": 97,
+        "name": "Torch Enterprises",
+        "confidence": 4,
+        "confidenceB": 58
+      },
+      {
+        "id": 98,
+        "name": "Ultra Industries",
+        "confidence": 3,
+        "confidenceB": 86
+      },
+      {
+        "id": 99,
+        "name": "Vertex Systems",
+        "confidence": 2,
+        "confidenceB": 69
+      },
+      {
+        "id": 100,
+        "name": "Zero Tech",
+        "confidence": 1,
+        "confidenceB": 50
+      }
+    ],
+    "2": [
+      {
+        "id": 187,
+        "name": "Junior Capital LLC",
+        "confidence": 100,
+        "confidenceB": 92,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=junior",
+        "revenue": "$4.7B",
+        "ebitda": "$799M",
+        "shareholders": [
+          "High-Yield Specialists",
+          "Credit Opportunity Funds",
+          "Strategic Partners (36%)"
+        ],
+        "reasoning": "Premium positioning in subordinated debt markets. Strong sponsor relationships provide proprietary deal flow."
+      },
+      {
+        "id": 186,
+        "name": "Senior Debt Fund",
+        "confidence": 99,
+        "confidenceB": 95,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=senior",
+        "revenue": "$5.2B",
+        "ebitda": "$728M",
+        "shareholders": [
+          "Fixed Income Investors",
+          "Insurance Companies",
+          "Pension Funds (65%)"
+        ],
+        "reasoning": "Senior secured lending with first lien protection. Strong covenant packages and low loss-given-default profile."
+      },
+      {
+        "id": 185,
+        "name": "Mezzanine Capital",
+        "confidence": 98,
+        "confidenceB": 88,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=mezzanine",
+        "revenue": "$3.8B",
+        "ebitda": "$684M",
+        "shareholders": [
+          "Structured Finance",
+          "Alternative Credit",
+          "Insurance Capital (42%)"
+        ],
+        "reasoning": "Attractive risk-adjusted returns in capital structure sweet spot. Equity upside through warrants enhances IRR."
+      },
+      {
+        "id": 181,
+        "name": "Receivables Finance",
+        "confidence": 97,
+        "confidenceB": 91,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=receivables",
+        "revenue": "$3.5B",
+        "ebitda": "$595M",
+        "shareholders": [
+          "Trade Finance Specialists",
+          "Banks Co-Investment",
+          "Private Equity (38%)"
+        ],
+        "reasoning": "Growing trade finance market with strong credit fundamentals. Technology platform provides competitive advantage."
+      },
+      {
+        "id": 141,
+        "name": "Long-Short Equity",
+        "confidence": 96,
+        "confidenceB": 90,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=longshort",
+        "revenue": "$3.2B",
+        "ebitda": "$576M",
+        "shareholders": [
+          "Hedge Fund Investors",
+          "Ultra-HNW",
+          "Institutional (48%)"
+        ],
+        "reasoning": "Best-in-class equity hedge fund with 15% annualized returns. Low correlation to market provides portfolio diversification."
+      },
+      {
+        "id": 182,
+        "name": "Supply Chain Finance",
+        "confidence": 95,
+        "confidenceB": 87,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=supply",
+        "revenue": "$4.1B",
+        "ebitda": "$656M",
+        "shareholders": [
+          "Global Trade Partners",
+          "Strategic Corporates",
+          "Financial Institutions (55%)"
+        ],
+        "reasoning": "Mission-critical financing for global supply chains. Blue-chip corporate relationships ensure stable cash flows."
+      },
+      {
+        "id": 101,
+        "name": "Capital Growth Fund",
+        "confidence": 94,
+        "confidenceB": 89,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=capital",
+        "revenue": "$2.1B",
+        "ebitda": "$420M",
+        "shareholders": [
+          "Institutional LPs",
+          "Pension Funds",
+          "Endowments (55%)"
+        ],
+        "reasoning": "Top-quartile returns over 10-year track record. Strong deal flow from proprietary network and sector expertise."
+      },
+      {
+        "id": 142,
+        "name": "Market Neutral Fund",
+        "confidence": 93,
+        "confidenceB": 88,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=neutral",
+        "revenue": "$2.8B",
+        "ebitda": "$448M",
+        "shareholders": [
+          "Risk-Averse Institutions",
+          "Absolute Return Seekers",
+          "Fund of Funds (52%)"
+        ],
+        "reasoning": "Consistent absolute returns independent of market direction. Sharp ratio of 2.1 demonstrates risk management excellence."
+      },
+      {
+        "id": 183,
+        "name": "Working Capital Fund",
+        "confidence": 92,
+        "confidenceB": 94,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=working",
+        "revenue": "$2.9B",
+        "ebitda": "$551M",
+        "shareholders": [
+          "SME Investors",
+          "Regional Banks",
+          "Institutional Partners (47%)"
+        ],
+        "reasoning": "High-velocity lending with strong unit economics. Automated underwriting reduces default rates below industry average."
+      },
+      {
+        "id": 102,
+        "name": "Equity Partners LLC",
+        "confidence": 91,
+        "confidenceB": 85,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=equity",
+        "revenue": "$1.8B",
+        "ebitda": "$360M",
+        "shareholders": [
+          "Partner Capital",
+          "Sovereign Wealth",
+          "Family Offices (40%)"
+        ],
+        "reasoning": "Consistent value creation through operational improvements. Portfolio companies show average 3x return multiple."
+      },
+      {
+        "id": 143,
+        "name": "Event Driven Capital",
+        "confidence": 90,
+        "confidenceB": 93,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=event",
+        "revenue": "$2.5B",
+        "ebitda": "$525M",
+        "shareholders": [
+          "Opportunistic Investors",
+          "Strategic Partners",
+          "GP Commitment (25%)"
+        ],
+        "reasoning": "M&A expertise with inside track on corporate transactions. Event pipeline suggests strong upcoming performance."
+      },
+      {
+        "id": 184,
+        "name": "Bridge Loan Partners",
+        "confidence": 89,
+        "confidenceB": 82,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=bridge",
+        "revenue": "$2.2B",
+        "ebitda": "$418M",
+        "shareholders": [
+          "Real Estate Funds",
+          "Opportunity Investors",
+          "GP Capital (28%)"
+        ],
+        "reasoning": "Short-duration loans with asset backing. Strong recovery rates and growing real estate development pipeline."
+      },
+      {
+        "id": 103,
+        "name": "Investment Strategies Inc",
+        "confidence": 88,
+        "confidenceB": 92,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=investment",
+        "revenue": "$1.5B",
+        "ebitda": "$315M",
+        "shareholders": [
+          "Strategic Investors",
+          "HNW Clients",
+          "Institutional (50%)"
+        ],
+        "reasoning": "Quantitative approach with proven alpha generation. Risk-adjusted returns exceed benchmark by 12%."
+      },
+      {
+        "id": 144,
+        "name": "Distressed Debt Fund",
+        "confidence": 87,
+        "confidenceB": 76,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=distressed",
+        "revenue": "$1.9B",
+        "ebitda": "$342M",
+        "shareholders": [
+          "Opportunistic Capital",
+          "Restructuring Specialists",
+          "Limited Partners (60%)"
+        ],
+        "reasoning": "Countercyclical strategy well-positioned for economic uncertainty. Deep restructuring expertise drives value creation."
+      },
+      {
+        "id": 104,
+        "name": "Wealth Management Co",
+        "confidence": 86,
+        "confidenceB": 78,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=wealth",
+        "revenue": "$985M",
+        "ebitda": "$245M",
+        "shareholders": [
+          "Private Banking Group",
+          "Trust Companies",
+          "RIA Network (35%)"
+        ],
+        "reasoning": "Premium wealth advisory with $50B+ AUM. Client retention rate of 98% demonstrates service excellence."
+      },
+      {
+        "id": 145,
+        "name": "Merger Arbitrage LLC",
+        "confidence": 85,
+        "confidenceB": 84,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=merger",
+        "revenue": "$1.7B",
+        "ebitda": "$289M",
+        "shareholders": [
+          "Arb Specialists",
+          "Multi-Strategy Funds",
+          "Strategic LPs (44%)"
+        ],
+        "reasoning": "Low volatility returns with market-neutral profile. Strong deal analysis capabilities minimize downside risk."
+      },
+      {
+        "id": 105,
+        "name": "Portfolio Solutions",
+        "confidence": 84,
+        "confidenceB": 87,
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=portfolio",
+        "revenue": "$1.2B",
+        "ebitda": "$288M",
+        "shareholders": [
+          "Diversified Holdings",
+          "Investment Committee",
+          "Partners (45%)"
+        ],
+        "reasoning": "Multi-asset class expertise with ESG focus. Strong performance in alternative investments segment."
+      },
+      {
+        "id": 146,
+        "name": "Convertible Bond Fund",
+        "confidence": 83,
+        "confidenceB": 71
+      },
+      {
+        "id": 106,
+        "name": "Asset Advisors",
+        "confidence": 82,
+        "confidenceB": 74
+      },
+      {
+        "id": 147,
+        "name": "Volatility Trading",
+        "confidence": 81,
+        "confidenceB": 87
+      },
+      {
+        "id": 107,
+        "name": "Financial Futures",
+        "confidence": 80,
+        "confidenceB": 83
+      },
+      {
+        "id": 148,
+        "name": "Options Strategy Group",
+        "confidence": 79,
+        "confidenceB": 69
+      },
+      {
+        "id": 108,
+        "name": "Market Makers Group",
+        "confidence": 78,
+        "confidenceB": 71
+      },
+      {
+        "id": 149,
+        "name": "Futures Trading LLC",
+        "confidence": 77,
+        "confidenceB": 82
+      },
+      {
+        "id": 109,
+        "name": "Trust Holdings",
+        "confidence": 76,
+        "confidenceB": 86
+      },
+      {
+        "id": 150,
+        "name": "Swap Desk Partners",
+        "confidence": 75,
+        "confidenceB": 78
+      },
+      {
+        "id": 110,
+        "name": "Dividend Capital",
+        "confidence": 74,
+        "confidenceB": 69
+      },
+      {
+        "id": 151,
+        "name": "Structured Products",
+        "confidence": 73,
+        "confidenceB": 85
+      },
+      {
+        "id": 111,
+        "name": "Growth Equity Fund",
+        "confidence": 72,
+        "confidenceB": 81
+      },
+      {
+        "id": 152,
+        "name": "Credit Default Fund",
+        "confidence": 71,
+        "confidenceB": 66
+      },
+      {
+        "id": 112,
+        "name": "Value Investors Ltd",
+        "confidence": 70,
+        "confidenceB": 76
+      },
+      {
+        "id": 153,
+        "name": "Interest Rate Strategies",
+        "confidence": 69,
+        "confidenceB": 80
+      },
+      {
+        "id": 113,
+        "name": "Strategic Finance",
+        "confidence": 68,
+        "confidenceB": 88
+      },
+      {
+        "id": 154,
+        "name": "Equity Derivatives",
+        "confidence": 67,
+        "confidenceB": 73
+      },
+      {
+        "id": 114,
+        "name": "Hedge Fund Partners",
+        "confidence": 66,
+        "confidenceB": 65
+      },
+      {
+        "id": 155,
+        "name": "Asset Backed Securities",
+        "confidence": 65,
+        "confidenceB": 77
+      },
+      {
+        "id": 115,
+        "name": "Prime Capital",
+        "confidence": 64,
+        "confidenceB": 79
+      },
+      {
+        "id": 156,
+        "name": "Mortgage Trading Desk",
+        "confidence": 63,
+        "confidenceB": 64
+      },
+      {
+        "id": 116,
+        "name": "Alpha Investments",
+        "confidence": 62,
+        "confidenceB": 72
+      },
+      {
+        "id": 157,
+        "name": "Municipal Bond Fund",
+        "confidence": 61,
+        "confidenceB": 83
+      },
+      {
+        "id": 117,
+        "name": "Beta Returns LLC",
+        "confidence": 60,
+        "confidenceB": 84
+      },
+      {
+        "id": 158,
+        "name": "Corporate Bond Traders",
+        "confidence": 59,
+        "confidenceB": 68
+      },
+      {
+        "id": 118,
+        "name": "Venture Capital Group",
+        "confidence": 58,
+        "confidenceB": 67
+      },
+      {
+        "id": 159,
+        "name": "Treasury Operations",
+        "confidence": 57,
+        "confidenceB": 75
+      },
+      {
+        "id": 119,
+        "name": "Private Equity Fund",
+        "confidence": 56,
+        "confidenceB": 75
+      },
+      {
+        "id": 160,
+        "name": "Money Market Fund",
+        "confidence": 55,
+        "confidenceB": 60
+      },
+      {
+        "id": 120,
+        "name": "Mutual Fund Alliance",
+        "confidence": 54,
+        "confidenceB": 62
+      },
+      {
+        "id": 161,
+        "name": "Cash Management LLC",
+        "confidence": 53,
+        "confidenceB": 81
+      },
+      {
+        "id": 121,
+        "name": "Bond Trading Co",
+        "confidence": 52,
+        "confidenceB": 80
+      },
+      {
+        "id": 162,
+        "name": "Liquidity Solutions",
+        "confidence": 51,
+        "confidenceB": 56
+      },
+      {
+        "id": 122,
+        "name": "Derivatives Desk",
+        "confidence": 50,
+        "confidenceB": 58
+      },
+      {
+        "id": 163,
+        "name": "Capital Markets Group",
+        "confidence": 49,
+        "confidenceB": 78
+      },
+      {
+        "id": 123,
+        "name": "Fixed Income Partners",
+        "confidence": 48,
+        "confidenceB": 73
+      },
+      {
+        "id": 164,
+        "name": "Investment Banking Co",
+        "confidence": 47,
+        "confidenceB": 65
+      },
+      {
+        "id": 124,
+        "name": "Commodity Traders",
+        "confidence": 46,
+        "confidenceB": 68
+      },
+      {
+        "id": 165,
+        "name": "Mergers & Acquisitions",
+        "confidence": 45,
+        "confidenceB": 72
+      },
+      {
+        "id": 125,
+        "name": "Currency Exchange LLC",
+        "confidence": 44,
+        "confidenceB": 82
+      },
+      {
+        "id": 166,
+        "name": "IPO Advisory",
+        "confidence": 43,
+        "confidenceB": 59
+      },
+      {
+        "id": 126,
+        "name": "Real Estate Fund",
+        "confidence": 42,
+        "confidenceB": 64
+      },
+      {
+        "id": 167,
+        "name": "Debt Capital Markets",
+        "confidence": 41,
+        "confidenceB": 84
+      },
+      {
+        "id": 127,
+        "name": "Infrastructure Capital",
+        "confidence": 40,
+        "confidenceB": 77
+      },
+      {
+        "id": 168,
+        "name": "Equity Capital Markets",
+        "confidence": 39,
+        "confidenceB": 67
+      },
+      {
+        "id": 128,
+        "name": "Emerging Markets Fund",
+        "confidence": 38,
+        "confidenceB": 59
+      },
+      {
+        "id": 169,
+        "name": "Restructuring Advisors",
+        "confidence": 37,
+        "confidenceB": 76
+      },
+      {
+        "id": 129,
+        "name": "Global Equity Partners",
+        "confidence": 36,
+        "confidenceB": 85
+      },
+      {
+        "id": 170,
+        "name": "Valuation Services",
+        "confidence": 35,
+        "confidenceB": 62
+      },
+      {
+        "id": 130,
+        "name": "Sovereign Wealth Co",
+        "confidence": 34,
+        "confidenceB": 70
+      },
+      {
+        "id": 171,
+        "name": "Due Diligence Partners",
+        "confidence": 33,
+        "confidenceB": 80
+      },
+      {
+        "id": 131,
+        "name": "Pension Fund Advisors",
+        "confidence": 32,
+        "confidenceB": 66
+      },
+      {
+        "id": 172,
+        "name": "Financial Modeling LLC",
+        "confidence": 31,
+        "confidenceB": 54
+      },
+      {
+        "id": 132,
+        "name": "Insurance Portfolio",
+        "confidence": 30,
+        "confidenceB": 81
+      },
+      {
+        "id": 173,
+        "name": "Corporate Finance Group",
+        "confidence": 29,
+        "confidenceB": 73
+      },
+      {
+        "id": 133,
+        "name": "Credit Analysis Group",
+        "confidence": 28,
+        "confidenceB": 55
+      },
+      {
+        "id": 174,
+        "name": "Private Placements",
+        "confidence": 27,
+        "confidenceB": 61
+      },
+      {
+        "id": 134,
+        "name": "Risk Management LLC",
+        "confidence": 26,
+        "confidenceB": 74
+      },
+      {
+        "id": 175,
+        "name": "Syndication Desk",
+        "confidence": 25,
+        "confidenceB": 79
+      },
+      {
+        "id": 135,
+        "name": "Compliance Partners",
+        "confidence": 24,
+        "confidenceB": 63
+      },
+      {
+        "id": 176,
+        "name": "Leveraged Finance",
+        "confidence": 23,
+        "confidenceB": 58
+      },
+      {
+        "id": 136,
+        "name": "Trading Desk Alpha",
+        "confidence": 22,
+        "confidenceB": 79
+      },
+      {
+        "id": 177,
+        "name": "Project Finance LLC",
+        "confidence": 21,
+        "confidenceB": 86
+      },
+      {
+        "id": 137,
+        "name": "Arbitrage Fund",
+        "confidence": 20,
+        "confidenceB": 57
+      },
+      {
+        "id": 178,
+        "name": "Trade Finance Group",
+        "confidence": 19,
+        "confidenceB": 63
+      },
+      {
+        "id": 138,
+        "name": "Quantitative Strategies",
+        "confidence": 18,
+        "confidenceB": 86
+      },
+      {
+        "id": 179,
+        "name": "Export Credit Agency",
+        "confidence": 17,
+        "confidenceB": 74
+      },
+      {
+        "id": 139,
+        "name": "Algorithmic Trading Co",
+        "confidence": 16,
+        "confidenceB": 61
+      },
+      {
+        "id": 180,
+        "name": "Factoring Solutions",
+        "confidence": 15,
+        "confidenceB": 52
+      },
+      {
+        "id": 140,
+        "name": "High Frequency Partners",
+        "confidence": 14,
+        "confidenceB": 75
+      },
+      {
+        "id": 188,
+        "name": "Equity Co-Investment",
+        "confidence": 13,
+        "confidenceB": 68
+      },
+      {
+        "id": 189,
+        "name": "Fund of Funds",
+        "confidence": 12,
+        "confidenceB": 55
+      },
+      {
+        "id": 190,
+        "name": "Secondary Market Fund",
+        "confidence": 11,
+        "confidenceB": 71
+      },
+      {
+        "id": 191,
+        "name": "Direct Lending Group",
+        "confidence": 10,
+        "confidenceB": 59
+      },
+      {
+        "id": 192,
+        "name": "Specialty Finance LLC",
+        "confidence": 9,
+        "confidenceB": 77
+      },
+      {
+        "id": 193,
+        "name": "Alternative Credit",
+        "confidence": 8,
+        "confidenceB": 64
+      },
+      {
+        "id": 194,
+        "name": "Opportunistic Fund",
+        "confidence": 7,
+        "confidenceB": 83
+      },
+      {
+        "id": 195,
+        "name": "Tactical Allocation",
+        "confidence": 6,
+        "confidenceB": 60
+      },
+      {
+        "id": 196,
+        "name": "Multi-Strategy Partners",
+        "confidence": 5,
+        "confidenceB": 75
+      },
+      {
+        "id": 197,
+        "name": "Absolute Return Fund",
+        "confidence": 4,
+        "confidenceB": 57
+      },
+      {
+        "id": 198,
+        "name": "Global Macro Strategy",
+        "confidence": 3,
+        "confidenceB": 81
+      },
+      {
+        "id": 199,
+        "name": "Systematic Trading",
+        "confidence": 2,
+        "confidenceB": 66
+      },
+      {
+        "id": 200,
+        "name": "Discretionary Fund",
+        "confidence": 1,
+        "confidenceB": 70
+      }
+    ]
+  }
+}
