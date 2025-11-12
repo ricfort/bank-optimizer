@@ -1,7 +1,7 @@
 # 🏦 Banker Optimizer AI
 
 A modern web application for optimizing banking portfolio recommendations using AI-powered confidence scoring.
-Created for a hackathon, AI in this repo is disconnected and replaced with mocks. 
+Created for a hackathon, **AI in this repo is disconnected and replaced with mocks**. 
 
 ## Features
 
