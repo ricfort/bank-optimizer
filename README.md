@@ -39,11 +39,4 @@ Created for a hackathon, **AI in this repo is disconnected and replaced with moc
 - Tailwind CSS
 - JSON-based configuration
 
-## Demo Data
-
-The app includes:
-- 2 sample customers (TechCorp Industries, Global Finance Partners)
-- 100 companies per customer with dual confidence scores
-
-Perfect for hackathon demos! 🚀
 
